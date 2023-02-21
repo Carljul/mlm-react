@@ -1,0 +1,7 @@
+{
+  "name": "mlm",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
