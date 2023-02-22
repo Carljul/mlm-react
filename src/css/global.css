@@ -1,0 +1,82 @@
+.header-md::after {
+    background-image: unset;
+}
+
+ion-item {
+    --inner-border-width: 0 !important;
+}
+
+.profile {
+    width: 100px;
+    height: 100px;
+    max-width: unset;
+}
+
+.profileIcons {
+    background-color: #cef1e1;
+    padding: 10px;
+    border-radius: 8px;
+    color: black;
+}
+
+.tagCard {
+    background-color: red;
+    color: #fff;
+    height: 30px;
+}
+
+.tagCard ion-card-content {
+    padding: 5px 10px;
+}
+
+.toast-button {
+    background-color: #ecb52f !important;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    font-weight: bold;
+    height: 27px;
+    padding: 0 10px;
+    width: 40px;
+}
+
+.greenNotification {
+    background-color: #cef1e1;
+    padding: 10px;
+    margin: 0;
+}
+
+.categoryCircle {
+    width: 100px;
+    height: 100px;
+    border: 3px solid green;
+}
+
+.categoryGroup {
+    text-align: center;
+}
+
+.cicrcleCategoryList {
+    display: inline-flex;
+}
+
+.categoryScroll {
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.categoryScroll::-webkit-scrollbar {
+    display: none;
+}
+
+.filterRow {
+    background-color: #d7e8f4;
+}
+
+.withWhiteLine {
+    border-right: 2px solid white;
+}
+
+.d-flex {
+    display: flex;
+}
