@@ -1,5 +1,5 @@
 import { IonCol, IonContent, IonGrid, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonSearchbar, IonVirtualScroll } from '@ionic/react';
-import { locationOutline, chevronForward, cashOutline, personOutline, thunderstormOutline } from 'ionicons/icons';
+import { locationOutline, chevronForward, cashOutline, personOutline, thunderstormOutline, boatOutline } from 'ionicons/icons';
 import CardItem from '../../components/CardItem';
 import CategoryCircle from '../../components/CategoryCircleComponent';
 import Header from '../../components/HeaderComponent';
@@ -10,7 +10,7 @@ const Home: React.FC = () => {
       <Header />
       <IonContent fullscreen>
         {/* Search Bar */}
-        <IonSearchbar />
+        <IonSearchbar className='sticky' />
         {/* Notification */}
         <p className="greenNotification">
             <IonIcon
@@ -43,35 +43,36 @@ const Home: React.FC = () => {
               </div>
             </IonCol>
         </IonRow>
+        
         {/* Filter */}
         <IonRow className='filterRow'>
             <IonCol>
-              <IonRow className="withWhiteLine">
-                <IonCol size='3'>
+              <IonRow className="withWhiteLine h-100">
+                <IonCol size='3' className='mr-1 p-0'>
                   <IonIcon icon={cashOutline} size="large"></IonIcon>
                 </IonCol>
                 <IonCol>
-                  <IonLabel>Cash on <br /> Delivery</IonLabel>
+                  <IonLabel className='filterLabel'>Cash on <br /> Delivery</IonLabel>
                 </IonCol>
               </IonRow>
             </IonCol>
             <IonCol>
-              <IonRow className="withWhiteLine">
-                <IonCol size='3'>
-                  <IonIcon icon={cashOutline} size="large"></IonIcon>
+              <IonRow className="withWhiteLine h-100">
+                <IonCol size='3' className='mr-1 p-0'>
+                  <IonIcon icon={boatOutline} size="large"></IonIcon>
                 </IonCol>
                 <IonCol>
-                  <IonLabel>Free Delivery <br /> Free Return</IonLabel>
+                  <IonLabel className='filterLabel'>Free Delivery <br /> Free Return</IonLabel>
                 </IonCol>
               </IonRow>
             </IonCol>
             <IonCol>
-              <IonRow>
-                <IonCol size='3'>
+              <IonRow class='h-100'>
+                <IonCol size='3' className='mr-1 p-0'>
                   <IonIcon icon={personOutline} size="large"></IonIcon>
                 </IonCol>
                 <IonCol>
-                  <IonLabel>Lowest <br />Price</IonLabel>
+                  <IonLabel className='filterLabel'>Lowest <br />Price</IonLabel>
                 </IonCol>
               </IonRow>
             </IonCol>
@@ -84,11 +85,18 @@ const Home: React.FC = () => {
           </IonCol>
         </IonRow>
 
-        <IonList className='d-flex'>
+        {/* Card Items */}
+        <div className='d-grid template-3-columns'>
           <CardItem name="Fjallraven - Fo" price="$109.95" img="https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png" />
           <CardItem name="Fjallraven - Fo" price="$109.95" img="https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png" />
           <CardItem name="Fjallraven - Fo" price="$109.95" img="https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png" />
-        </IonList>
+          <CardItem name="Fjallraven - Fo" price="$109.95" img="https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png" />
+          <CardItem name="Fjallraven - Fo" price="$109.95" img="https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png" />
+          <CardItem name="Fjallraven - Fo" price="$109.95" img="https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png" />
+          <CardItem name="Fjallraven - Fo" price="$109.95" img="https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png" />
+          <CardItem name="Fjallraven - Fo" price="$109.95" img="https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png" />
+          <CardItem name="Fjallraven - Fo" price="$109.95" img="https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png" />
+        </div>
 
       </IonContent>
     </IonPage>

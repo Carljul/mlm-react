@@ -7,13 +7,14 @@ import {
     IonTabs
 } from '@ionic/react';
   
+import { homeOutline, gridOutline, cartOutline, receiptOutline, personOutline } from 'ionicons/icons';
 import { Route, Redirect } from 'react-router-dom';
 import Home from './home/Home';
 import Cart from './cart/Cart';
 import Categories from './categories/Categories';
 import Orders from './orders/Orders';
 import Account from './account/Account';
-import { homeOutline, gridOutline, cartOutline, receiptOutline, personOutline } from 'ionicons/icons';
+import Details from './item/details/Details';
   
 const Navigation: React.FC = () => {
     return (
@@ -25,6 +26,7 @@ const Navigation: React.FC = () => {
                 <Route path="/app/cart" component={Cart} />
                 <Route path="/app/orders" component={Orders} />
                 <Route path="/app/account" component={Account} />
+                <Route path="/app/details" component={Details} />
                 <Route exact path="/app">
                     <Redirect to="/app/home" />
                 </Route>

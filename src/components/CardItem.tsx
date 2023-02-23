@@ -1,4 +1,4 @@
-import { IonAvatar, IonCard, IonCardContent, IonItem, IonLabel, IonText, IonThumbnail } from '@ionic/react';
+import { useIonRouter } from "@ionic/react";
 
 interface CardItemProps {
   img?: string,
@@ -6,21 +6,22 @@ interface CardItemProps {
   price?: string
 }
 
-const CardItem: React.FC<CardItemProps> = ({img, name, price}) => {
-  return (
-    <IonItem>
-        <IonCard>
-            <IonCardContent>
-                <IonThumbnail>
-                    <img alt={name} src={img} />
-                </IonThumbnail>
-                <IonText>{name}</IonText>
-                <br />
-                <IonText>{price}</IonText>
-            </IonCardContent>
-        </IonCard>
-    </IonItem>
-  );
+const CardItem: React.FC<CardItemProps> = (props: CardItemProps) => {
+    const routeToDetails = useIonRouter();
+    const seeDetails = () => {
+        routeToDetails.push('/app/details', 'forward', 'replace');
+    }
+    return (
+        <div className="card itemCard" onClick={seeDetails}>
+            <div className="card-content">
+                <div className='itemImage'>
+                    <img alt={props.name} src={props.img}/>
+                </div>
+                <p className='itemName'>{props.name}</p>
+                <p className="float-right itemPrice">{props.price}</p>
+            </div>
+        </div>
+    );
 };
 
 export default CardItem;
