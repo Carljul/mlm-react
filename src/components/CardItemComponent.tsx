@@ -6,11 +6,12 @@ interface CardItemProps {
   price?: string
 }
 
-const CardItem: React.FC<CardItemProps> = (props: CardItemProps) => {
+const CardItemComponent: React.FC<CardItemProps> = (props: CardItemProps) => {
     const routeToDetails = useIonRouter();
     const seeDetails = () => {
-        routeToDetails.push('/app/details', 'forward', 'replace');
+        routeToDetails.push('/app/details');
     }
+    
     return (
         <div className="card itemCard" onClick={seeDetails}>
             <div className="card-content">
@@ -24,4 +25,4 @@ const CardItem: React.FC<CardItemProps> = (props: CardItemProps) => {
     );
 };
 
-export default CardItem;
+export default CardItemComponent;
