@@ -27,6 +27,7 @@ const Navigation: React.FC = () => {
                 <Route path="/app/orders" component={Orders} />
                 <Route path="/app/account" component={Account} />
                 <Route path="/app/details" component={Details} />
+                <Route path="/app/review" component={Details} />
                 <Route exact path="/app">
                     <Redirect to="/app/home" />
                 </Route>

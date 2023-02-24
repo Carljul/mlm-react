@@ -1,13 +1,51 @@
-import { IonCol, IonContent, IonGrid, IonPage, IonRow, IonSelect, IonSelectOption} from '@ionic/react';
+import { IonAvatar, IonButton, IonCol, IonContent, IonGrid, IonLabel, IonPage, IonRouterLink, IonRow, IonSelect, IonSelectOption} from '@ionic/react';
 import Header from '../../../components/HeaderComponent';
+import StarRatingComponent from '../../../components/StarRatingComponent';
+import UserRatingComponent from '../../../components/UserRatingComponent';
+import VariationDropdownComponent from '../../../components/VariationDropdownComponent';
 
 
 const Details: React.FC = () => {
+  const sizes = [{
+      index: 'xs',
+      value: 'XS'
+    },{
+      index: 's',
+      value: 'S'
+    },{
+      index: 'm',
+      value: 'M'
+    },{
+      index: 'l',
+      value: 'L'
+    },{
+      index: 'xl',
+      value: 'XL'
+    },{
+      index: 'xxl',
+      value: 'XXL'
+    }];
+  
+  const colors = [{
+    index: 'green',
+    value: 'Green'
+  },{
+    index: 'blue',
+    value: 'Blue'
+  },{
+    index: 'yellow',
+    value: 'Yellow'
+  },{
+    index: 'black',
+    value: 'Black'
+  }]
+
+
   return (
     <IonPage>
         <Header/>
-        <IonContent fullscreen>
-            <IonGrid>
+        <IonContent className='ion-padding'>
+            <IonGrid className='mb-3'>
               <IonRow>
                 <IonCol>
                   <h1 className='center bold'>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</h1>
@@ -15,24 +53,52 @@ const Details: React.FC = () => {
               </IonRow>
               <IonRow>
                 <IonCol>
-                  <IonSelect placeholder='Select Size' className='variationDropdown'>
-                    <IonSelectOption value='extra_small'>XS</IonSelectOption>
-                    <IonSelectOption value='small'>S</IonSelectOption>
-                    <IonSelectOption value='medium'>M</IonSelectOption>
-                    <IonSelectOption value='large'>L</IonSelectOption>
-                    <IonSelectOption value='extra_large'>XL</IonSelectOption>
-                    <IonSelectOption value='double_extra_large'>XL</IonSelectOption>
-                  </IonSelect>
+                  <VariationDropdownComponent
+                    type='sizes'
+                    list={sizes}
+                  />
                 </IonCol>
                 <IonCol>
-                  <IonSelect placeholder='Select Size' className='variationDropdown'>
-                    <IonSelectOption value='extra_small'>XS</IonSelectOption>
-                    <IonSelectOption value='small'>S</IonSelectOption>
-                    <IonSelectOption value='medium'>M</IonSelectOption>
-                    <IonSelectOption value='large'>L</IonSelectOption>
-                    <IonSelectOption value='extra_large'>XL</IonSelectOption>
-                    <IonSelectOption value='double_extra_large'>XL</IonSelectOption>
-                  </IonSelect>
+                  <VariationDropdownComponent
+                    type='colors'
+                    list={colors}
+                  />
+                </IonCol>
+              </IonRow>
+              <IonRow>
+                <IonCol>
+                  <h4 className='bold'>Details</h4>
+                </IonCol>
+              </IonRow>
+              <IonRow>
+                <IonCol>
+                  <p className='text-justify'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda a corporis totam, necessitatibus minus animi deserunt magnam eligendi nisi perspiciatis, dolores harum quia atque sunt! Minima necessitatibus debitis a molestiae.</p>
+                </IonCol>
+              </IonRow>
+              <IonRow>
+                <IonCol>
+                  <h4 className='bold'>Reviews</h4>
+                  <IonRouterLink color='success' href='/app/review'>Write your review</IonRouterLink>
+                </IonCol>
+              </IonRow>
+              <IonRow>
+                <IonCol>
+                  <UserRatingComponent />
+                  <UserRatingComponent />
+                  <UserRatingComponent />
+                </IonCol>
+              </IonRow>
+            </IonGrid>
+            {/* Add to Cart */}
+            <IonGrid className='fixedAddToCart'>
+              <IonRow>
+                <IonCol>
+                  <IonLabel>Price</IonLabel>
+                  <br />
+                  <IonLabel color='success'>$109.95</IonLabel>
+                </IonCol>
+                <IonCol>
+                  <IonButton color='success' className='fixedAddToCartButton'>ADD</IonButton>
                 </IonCol>
               </IonRow>
             </IonGrid>
