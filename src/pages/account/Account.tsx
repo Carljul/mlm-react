@@ -1,4 +1,4 @@
-import { isPlatform, IonAvatar, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonToast } from '@ionic/react';
+import { isPlatform, IonAvatar, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonToast, IonButton, IonRouterLink, useIonRouter } from '@ionic/react';
 import Header from '../../components/HeaderComponent';
 import {
     chevronForward,
@@ -10,27 +10,65 @@ import {
     cardOutline,
     notificationsOutline,
     closeCircle,
-    chevronForwardOutline
+    chevronForwardOutline,
+    powerOutline
 } from 'ionicons/icons'; 
+import { useEffect, useState } from 'react';
 
 const Account: React.FC = () => {
+    const [isAuth, setIsAuth] = useState(false);
+    const [isOpenToast, setIsOpenToast] = useState(true);
     const isIos = isPlatform('ios');
+    const toLoginNavigation = useIonRouter();
+
+
+    useEffect(() => {
+        let auth = localStorage.getItem('auth');
+        setIsAuth(auth ? true : false);
+    }, [])
+
+    const goToLogin = () => {
+        toLoginNavigation.push('/login', 'root', 'replace');
+    }
+
+    const logout = () => {
+        localStorage.removeItem('auth');
+        setIsAuth(false);
+    }
+    
     return (
         <IonPage>
             <Header />
             <IonContent className="ion-padding">
                 <IonGrid>
-                    <IonRow>
-                        <IonCol size="4">
-                            <IonAvatar>
-                                <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" className='profile'/>
-                            </IonAvatar>
-                        </IonCol>
-                        <IonCol>
-                            <h1>John Doe</h1>
-                            <p>john.doe2023@gmail.com</p>
-                        </IonCol>
-                    </IonRow>
+                    {isAuth ? 
+                        <IonRow>
+                            <IonCol size="4">
+                                <IonAvatar>
+                                    <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" className='profile'/>
+                                </IonAvatar>
+                            </IonCol>
+                            <IonCol>
+                                <h1>John Doe</h1>
+                                <p>john.doe2023@gmail.com</p>
+                            </IonCol>
+                        </IonRow>
+                        :
+                        <>
+                            <IonRow>
+                                <IonCol>
+                                    <IonButton expand='full' onClick={goToLogin}>
+                                        Login
+                                    </IonButton>
+                                </IonCol>
+                            </IonRow>
+                            <IonRow>
+                                <IonCol className='center'>
+                                    <IonRouterLink>Sign Up</IonRouterLink>
+                                </IonCol>
+                            </IonRow>
+                        </>
+                    }
                     <IonRow>
                         <IonCol>
                             <IonList>
@@ -72,22 +110,33 @@ const Account: React.FC = () => {
                                     <IonLabel>Notifications</IonLabel>
                                     {isIos ? <></> :<IonIcon icon={chevronForward} slot="end"></IonIcon>}
                                 </IonItem>
+
+                                {
+                                    isAuth ?
+                                    <IonItem button key="logout" onClick={logout}>
+                                        <IonIcon icon={powerOutline} slot="start" className='profileIcons'></IonIcon>
+                                        <IonLabel>Logout</IonLabel>
+                                        {isIos ? <></> :<IonIcon icon={chevronForward} slot="end"></IonIcon>}
+                                    </IonItem>
+                                    :
+                                    <></>
+                                }
                             </IonList>
                         </IonCol>
                     </IonRow>
                 </IonGrid>
                 {/* Toast */}
                 <IonToast
-                    isOpen={true}
+                    isOpen={isOpenToast}
                     message="Got a component with the name 'index' for the ..."
-                    duration={3000}
                     buttons={[{
                         side: 'start',
                         text: '11',
                         cssClass: 'chipEmbed'
                     }, {
                         side: 'end',
-                        icon: closeCircle
+                        icon: closeCircle,
+                        handler: () => {setIsOpenToast(false)}
                     }]}
                 />
             </IonContent>

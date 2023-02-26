@@ -21,6 +21,7 @@ const Navigation: React.FC = () => {
         <IonTabs>
             {/* Routes */}
             <IonRouterOutlet>
+                <Route path="/" component={Home} />
                 <Route path="/app/home" component={Home} />
                 <Route path="/app/categories" component={Categories} />
                 <Route path="/app/cart" component={Cart} />
