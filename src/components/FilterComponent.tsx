@@ -5,7 +5,7 @@ const FilterComponent: React.FC = () => {
     return (
         <IonRow className='filterRow'>
             <IonCol>
-              <IonRow className="withWhiteLine h-100">
+              <IonRow className="withWhiteLine h-100 center-align">
                 <IonCol size='3' className='mr-1 p-0'>
                   <IonIcon icon={cashOutline} size="large"></IonIcon>
                 </IonCol>
@@ -15,7 +15,7 @@ const FilterComponent: React.FC = () => {
               </IonRow>
             </IonCol>
             <IonCol>
-              <IonRow className="withWhiteLine h-100">
+              <IonRow className="withWhiteLine h-100 center-align">
                 <IonCol size='3' className='mr-1 p-0'>
                   <IonIcon icon={boatOutline} size="large"></IonIcon>
                 </IonCol>
@@ -25,7 +25,7 @@ const FilterComponent: React.FC = () => {
               </IonRow>
             </IonCol>
             <IonCol>
-              <IonRow class='h-100'>
+              <IonRow class='h-100 center-align'>
                 <IonCol size='3' className='mr-1 p-0'>
                   <IonIcon icon={personOutline} size="large"></IonIcon>
                 </IonCol>

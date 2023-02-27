@@ -20,6 +20,7 @@ const Account: React.FC = () => {
     const [isOpenToast, setIsOpenToast] = useState(true);
     const isIos = isPlatform('ios');
     const toLoginNavigation = useIonRouter();
+    const toShippingNavigation = useIonRouter();
 
 
     useEffect(() => {
@@ -29,6 +30,10 @@ const Account: React.FC = () => {
 
     const goToLogin = () => {
         toLoginNavigation.push('/login', 'root', 'replace');
+    }
+
+    const goToShipping = () => {
+        toShippingNavigation.push('/app/shipping', 'root', 'replace');
     }
 
     const logout = () => {
@@ -77,7 +82,7 @@ const Account: React.FC = () => {
                                     <IonLabel>Edit Profile</IonLabel>
                                     {isIos ? <></> : <IonIcon icon={chevronForwardOutline} slot="end"></IonIcon>}
                                 </IonItem>
-                                <IonItem button key="shipping">
+                                <IonItem button key="shipping" onClick={goToShipping}>
                                     <IonIcon icon={locationOutline} slot="start" className='profileIcons'></IonIcon>
                                     <IonLabel>Shipping Address</IonLabel>
                                     {isIos ? <></> : <IonIcon icon={chevronForwardOutline} slot="end"></IonIcon>}

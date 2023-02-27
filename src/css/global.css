@@ -96,6 +96,10 @@ ion-item {
     justify-content: space-between;
 }
 
+.space-between {
+    justify-content: space-between;
+}
+
 .card {
     border: 1.5px solid #cbcbcb;
     padding: 6px;
@@ -175,6 +179,14 @@ ion-item {
 
 .bold {
     font-weight: bold;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.right {
+    float: right;
 }
 
 .variationDropdown {
@@ -284,4 +296,136 @@ div.color-selected {
 
 .h-100px {
     height: 100px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.shippingAddress {
+    width: 250px;
+}
+
+.newShippingAddress {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 150px;
+    height: 60px;
+}
+
+ion-radio.shippingRadio {
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    align-self: center;
+}
+
+ion-radio.shippingRadio::part(container) {
+    border-radius: 8px;
+    border: 2px solid #bebebe;
+    background-color: #bebebe;
+    border-radius: 100px;
+    float: right;
+}
+
+ion-radio.shippingRadio::part(mark) {
+    background: none;
+    transition: none;
+    transform: none;
+    border-radius: 0;
+}
+
+ion-radio.shippingRadio.radio-checked::part(container) {
+    background: #6815ec;
+    border-color: transparent;
+}
+
+ion-radio.shippingRadio.radio-checked::part(mark) {
+    width: 6px;
+    height: 10px;
+
+    border-width: 0px 2px 2px 0px;
+    border-style: solid;
+    border-color: #fff;
+
+    transform: rotate(45deg);
+}
+
+.transactionCircle {
+    background-color: var(--ion-color-base);
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 100px;
+}
+
+.transactionName {
+    font-weight: 600;
+    font-size: 18px !important;
+}
+
+.transactionItems {
+    margin: 10px 0;
+}
+
+.transactionDateTime {
+    color: grey;
+    font-size: 12px;
+}
+
+.center-align {
+    align-items: center;
+}
+
+.cartItems {
+    border: 2px solid var(--ion-color-base);
+    border-radius: 4px;
+    height: 145px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.cartItems:last-child {
+    margin-bottom: 100px;
+}
+.cartItems ion-label {
+    margin-bottom: 10px;
+}
+
+.cartItems .countItemMultiplier {
+    position: absolute;
+    bottom: 2px;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(211, 211, 211);
+    border-radius: 6px;
+    padding: 5px 10px;
+    width: 150px;
+    text-align: center;
+}
+.cartItems .countItemMultiplier ion-icon {
+    align-self: center;
+}
+.cartItems .countItemMultiplier ion-input{
+    width: 50px;
+    background-color: transparent;
+    border: 0;
+    text-align: center;
+}
+.cartItems .countItemMultiplier ion-input.has-focus,
+.cartItems .countItemMultiplier ion-input.has-focus {
+    border: 0;
+}
+
+.checkoutContainer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 0;
+}
+
+.checkoutButton {
+    width: 160px;
+    height: 50px;
 }

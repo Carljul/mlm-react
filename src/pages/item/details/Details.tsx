@@ -1,6 +1,5 @@
-import { IonAvatar, IonButton, IonCol, IonContent, IonGrid, IonLabel, IonPage, IonRouterLink, IonRow, IonSelect, IonSelectOption} from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonGrid, IonLabel, IonPage, IonRouterLink, IonRow } from '@ionic/react';
 import Header from '../../../components/HeaderComponent';
-import StarRatingComponent from '../../../components/StarRatingComponent';
 import UserRatingComponent from '../../../components/UserRatingComponent';
 import VariationDropdownComponent from '../../../components/VariationDropdownComponent';
 

@@ -15,6 +15,7 @@ import Categories from './categories/Categories';
 import Orders from './orders/Orders';
 import Account from './account/Account';
 import Details from './item/details/Details';
+import Shipping from './address/Shipping';
   
 const Navigation: React.FC = () => {
     return (
@@ -29,6 +30,7 @@ const Navigation: React.FC = () => {
                 <Route path="/app/account" component={Account} />
                 <Route path="/app/details" component={Details} />
                 <Route path="/app/review" component={Details} />
+                <Route path="/app/shipping" component={Shipping} />
                 <Route exact path="/app">
                     <Redirect to="/app/home" />
                 </Route>
