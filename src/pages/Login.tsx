@@ -1,20 +1,41 @@
 import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonInput, IonItem, IonLabel, IonNote, IonPage, IonRow, IonTitle, IonToolbar, useIonRouter } from '@ionic/react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import axiosClient from '../axios-client';
+import { useStateContext } from '../contexts/ContextProvider';
 
 const Login: React.FC = () => {
+    // Navigations
     const navigation = useIonRouter()
+    const toLogin = useIonRouter();
+
     const [isTouched, setIsTouched] = useState(false);
     const [isValid, setIsValid] = useState<boolean>();
-    const [email, setEmail] = useState<string>();
-    const [password, setPassword] = useState<string>();
+
+    // References
+    const emailRef = useRef<HTMLIonInputElement>(null);
+    const passwordRef = useRef<HTMLIonInputElement>(null);
+    const {token} = useStateContext();
+  
+    if (token) {
+      toLogin.push('/app/home', 'root', 'replace');
+    }
 
     const doLogin = () => {
-        if (email == 'admin@gmail.com' && password == 'admin') {
-            localStorage.setItem('auth', 'true');
-            navigation.push('/app', 'root', 'replace')
-        } else {
-            alert('No account matched');
+        const payload = {
+            email: emailRef.current ? emailRef.current.value : '',
+            password: passwordRef.current ? passwordRef.current.value : ''
         }
+
+        axiosClient.post('/login', payload).then(({data}) => {
+            console.log(data)
+        })
+
+        // if (payload.email === 'admin@gmail.com' && payload.password === 'admin') {
+        //     localStorage.setItem('auth', 'true');
+        //     navigation.push('/app', 'root', 'replace')
+        // } else {
+        //     alert('No account matched');
+        // }
     }
 
 
@@ -27,8 +48,6 @@ const Login: React.FC = () => {
     const validate = (ev: Event) => {
         const value = (ev.target as HTMLInputElement).value;
 
-        setEmail(value);
-
         setIsValid(undefined);
 
         if (value === '') return;
@@ -40,11 +59,6 @@ const Login: React.FC = () => {
         setIsTouched(true);
     };
 
-
-    const setPasswordsValue = (event: Event) => {
-        setPassword((event.target as HTMLInputElement).value);
-    }
-
     return (
         <IonPage>
             <IonContent className="ion-padding">
@@ -53,7 +67,7 @@ const Login: React.FC = () => {
                         <IonCol>
                             <IonItem className={`${isValid && 'ion-valid'} ${isValid === false && 'ion-invalid'} ${isTouched && 'ion-touched'}`}>
                                 <IonLabel position="floating">Email</IonLabel>
-                                <IonInput type="email" onIonInput={(event) => validate(event)} onIonBlur={() => markTouched()}></IonInput>
+                                <IonInput type="email" onIonInput={(event) => validate(event)} onIonBlur={() => markTouched()} ref={emailRef}></IonInput>
                                 <IonNote slot="helper">Enter a valid email</IonNote>
                                 <IonNote slot="error">Invalid email</IonNote>
                             </IonItem>
@@ -63,7 +77,7 @@ const Login: React.FC = () => {
                         <IonCol>
                             <IonItem>
                                 <IonLabel position="floating">Password</IonLabel>
-                                <IonInput type="password" onIonInput={(event) => {setPasswordsValue(event)}} />
+                                <IonInput type="password" ref={passwordRef}/>
                             </IonItem>
                         </IonCol>
                     </IonRow>

@@ -14,20 +14,29 @@ import {
     powerOutline
 } from 'ionicons/icons'; 
 import { useEffect, useState } from 'react';
+import { useStateContext } from '../../contexts/ContextProvider';
 
 const Account: React.FC = () => {
-    const [isAuth, setIsAuth] = useState(false);
-    const [isOpenToast, setIsOpenToast] = useState(true);
+    // Platform
     const isIos = isPlatform('ios');
+
+    // Context
+    const {user, token} = useStateContext();
+
+    // States
+    const [isAuth, setIsAuth] = useState(token);
+    const [isOpenToast, setIsOpenToast] = useState(true);
+    
+    // Routes
     const toLoginNavigation = useIonRouter();
     const toShippingNavigation = useIonRouter();
 
 
     useEffect(() => {
-        let auth = localStorage.getItem('auth');
-        setIsAuth(auth ? true : false);
+        setIsAuth(token);
     }, [])
 
+    // Methods
     const goToLogin = () => {
         toLoginNavigation.push('/login', 'root', 'replace');
     }
@@ -37,8 +46,8 @@ const Account: React.FC = () => {
     }
 
     const logout = () => {
-        localStorage.removeItem('auth');
-        setIsAuth(false);
+        localStorage.removeItem('ACCESS_TOKEN');
+        setIsAuth(null);
     }
     
     return (
@@ -54,8 +63,8 @@ const Account: React.FC = () => {
                                 </IonAvatar>
                             </IonCol>
                             <IonCol>
-                                <h1>John Doe</h1>
-                                <p>john.doe2023@gmail.com</p>
+                                <h1>{user.name}</h1>
+                                <p>{user.email}</p>
                             </IonCol>
                         </IonRow>
                         :

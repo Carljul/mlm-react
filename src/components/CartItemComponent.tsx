@@ -22,7 +22,7 @@ const CartItemComponent: React.FC = () => {
 
     const checkCountValue = (event: React.KeyboardEvent<HTMLIonInputElement>) => {
         let value = event.currentTarget.value;
-        if (value == '' || value == null) {
+        if (value === '' || value === null) {
             setCountItem(1);
         }
     }
