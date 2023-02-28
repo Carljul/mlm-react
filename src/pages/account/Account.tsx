@@ -14,17 +14,17 @@ import {
     powerOutline
 } from 'ionicons/icons'; 
 import { useEffect, useState } from 'react';
-import { useStateContext } from '../../contexts/ContextProvider';
+import { useStateContext } from '../../provider/ContextProvider';
+import { getService, postService } from '../../services/httpServices';
 
 const Account: React.FC = () => {
     // Platform
     const isIos = isPlatform('ios');
 
     // Context
-    const {user, token} = useStateContext();
+    const {user, setUser, setToken} = useStateContext();
 
     // States
-    const [isAuth, setIsAuth] = useState(token);
     const [isOpenToast, setIsOpenToast] = useState(true);
     
     // Routes
@@ -33,7 +33,11 @@ const Account: React.FC = () => {
 
 
     useEffect(() => {
-        setIsAuth(token);
+        getService('/user').then(({data}) => {
+            setUser(data);
+        }).catch((e) => {
+            console.log(e);
+        });
     }, [])
 
     // Methods
@@ -46,8 +50,10 @@ const Account: React.FC = () => {
     }
 
     const logout = () => {
-        localStorage.removeItem('ACCESS_TOKEN');
-        setIsAuth(null);
+        postService('/logout', {}).then(() => {
+            setUser(null);
+            setToken(null);
+        })
     }
     
     return (
@@ -55,7 +61,7 @@ const Account: React.FC = () => {
             <Header />
             <IonContent className="ion-padding">
                 <IonGrid>
-                    {isAuth ? 
+                    {user ? 
                         <IonRow>
                             <IonCol size="4">
                                 <IonAvatar>
@@ -78,7 +84,7 @@ const Account: React.FC = () => {
                             </IonRow>
                             <IonRow>
                                 <IonCol className='center'>
-                                    <IonRouterLink>Sign Up</IonRouterLink>
+                                    <IonRouterLink routerLink='/signup'>Sign Up</IonRouterLink>
                                 </IonCol>
                             </IonRow>
                         </>
@@ -126,7 +132,7 @@ const Account: React.FC = () => {
                                 </IonItem>
 
                                 {
-                                    isAuth ?
+                                    user ?
                                     <IonItem button key="logout" onClick={logout}>
                                         <IonIcon icon={powerOutline} slot="start" className='profileIcons'></IonIcon>
                                         <IonLabel>Logout</IonLabel>

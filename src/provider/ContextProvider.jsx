@@ -6,16 +6,13 @@ const StateContext = createContext({
         email: null
     },
     token: null,
-    setUser: () => {},
-    setToken: () => {}
+    setUser: (data) => {},
+    setToken: (token) => {}
 });
 
 export const ContextProvider = ({children}) => {
-    const [user, setUser] = useState({
-        name: 'John Doe',
-        email: 'john.doe2023@gmail.com'
-    });
-    const [token, _setToken] = useState(null);
+    const [user, setUser] = useState();
+    const [token, _setToken] = useState();
 
     const setToken = (token) => {
         _setToken(token);

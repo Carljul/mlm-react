@@ -4,7 +4,7 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import './css/global.css';
-import { ContextProvider } from './contexts/ContextProvider';
+import { ContextProvider } from './provider/ContextProvider';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
