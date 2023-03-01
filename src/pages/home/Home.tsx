@@ -1,4 +1,4 @@
-import { IonCol, IonContent, IonIcon, IonPage, IonRow, IonSearchbar, useIonRouter } from '@ionic/react';
+import { IonCol, IonContent, IonIcon, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, RefresherEventDetail, useIonRouter } from '@ionic/react';
 import { thunderstormOutline } from 'ionicons/icons';
 import CardItemListComponent from '../../components/CardItemListComponent';
 import CategoryCircleListComponent from '../../components/CategoryCircleListComponent';
@@ -7,10 +7,22 @@ import Header from '../../components/HeaderComponent';
 import Notification from '../../components/NotificationComponent';
 
 const Home: React.FC = () => {
+  function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
+    setTimeout(() => {
+      // Any calls to load data go here
+      event.detail.complete();
+    }, 2000);
+  }
+
   return (
     <IonPage>
       <Header />
       <IonContent fullscreen>
+        {/* Refresher */}
+        <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+          <IonRefresherContent></IonRefresherContent>
+        </IonRefresher>
+        
         {/* Search Bar */}
         <IonSearchbar className='sticky' />
         
