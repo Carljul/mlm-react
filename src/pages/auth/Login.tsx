@@ -1,7 +1,7 @@
 import { IonButton, IonCol, IonContent, IonGrid, IonInput, IonItem, IonLabel, IonNote, IonPage, IonRouterLink, IonRow, useIonAlert, useIonRouter } from '@ionic/react';
 import { useEffect, useRef, useState } from 'react';
 import { useStateContext } from '../../provider/ContextProvider';
-import { validateEmail } from '../../services/emailServices';
+import { validateEmail } from '../../services/validationServices';
 import { getService, postService } from '../../services/httpServices';
 
 const Login: React.FC = () => {
@@ -37,16 +37,16 @@ const Login: React.FC = () => {
         }
 
         postService('/login', payload).then(function (result) {
-            if (!result.error) {
-                setUser(result.user)
-                setToken(result.token)
-                navigation.push('/app/home', 'root', 'replace');
-            } else {
+            if (result.error || result.errors) {
                 loginAlert({
                     header: 'Oh oh!',
                     message: 'No user match for given credentials',
                     buttons: ['OK']
                 })
+            } else {
+                setUser(result.user)
+                setToken(result.token)
+                navigation.push('/app/home', 'root', 'replace');
             }
         })
     }

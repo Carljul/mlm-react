@@ -31,12 +31,11 @@ const Account: React.FC = () => {
     const toLoginNavigation = useIonRouter();
     const toShippingNavigation = useIonRouter();
 
-
     useEffect(() => {
-        getService('/user').then(({data}) => {
-            setUser(data);
-        }).catch((e) => {
-            console.log(e);
+        getService('/user').then((data) => {
+            if (typeof(data) != 'undefined') {
+                setUser(data.data);
+            }
         });
     }, [])
 
