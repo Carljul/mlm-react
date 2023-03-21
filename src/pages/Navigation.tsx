@@ -6,6 +6,8 @@ import {
     IonTabButton,
     IonTabs
 } from '@ionic/react';
+
+import { BiHomeAlt } from "react-icons/bi";
   
 import { homeOutline, gridOutline, cartOutline, receiptOutline, personOutline } from 'ionicons/icons';
 import { Route, Redirect } from 'react-router-dom';
@@ -39,7 +41,7 @@ const Navigation: React.FC = () => {
             {/* Tab Bar */}
             <IonTabBar slot="bottom">
                 <IonTabButton tab="home" href="/app/home">
-                    <IonIcon icon={homeOutline}></IonIcon>
+                    <BiHomeAlt className='navigation-icon'/>
                     <IonLabel>Home</IonLabel>
                 </IonTabButton>
 

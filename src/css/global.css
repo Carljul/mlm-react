@@ -433,3 +433,7 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
 .text-red {
     color: red;
 }
+
+.navigation-icon {
+    font-size: 25px !important;
+}
