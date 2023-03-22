@@ -1,4 +1,4 @@
-import { IonButton, IonCol, IonContent, IonGrid, IonInput, IonItem, IonLabel, IonList, IonNote, IonPage, IonRouterLink, IonRow, useIonRouter } from "@ionic/react";
+import { IonButton, IonCol, IonContent, IonGrid, IonInput, IonItem, IonLabel, IonNote, IonPage, IonRouterLink, IonRow, useIonRouter } from "@ionic/react";
 import { useEffect, useRef, useState } from "react";
 import { validateEmail } from "../../services/validationServices";
 import { getService, postService } from "../../services/httpServices";
@@ -26,11 +26,11 @@ const SignUp: React.FC = () => {
 
     useEffect(() => {
         getService('/user').then((data) => {
-            if (typeof(data) != 'undefined' && typeof(data) != null) {
+            if (typeof data !== 'undefined' && data !== null) {
                 navigation.push('/app/home', 'root', 'replace');
             }
         })
-    }, [])
+    })
 
     const doSignUp = (event: React.KeyboardEvent<HTMLFormElement>) => {
         event.preventDefault();

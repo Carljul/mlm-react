@@ -20,7 +20,7 @@ const FilterComponent: React.FC = () => {
                   <IonIcon icon={boatOutline} size="large"></IonIcon>
                 </IonCol>
                 <IonCol>
-                  <IonLabel className='filterLabel'>Free Delivery <br /> Free Return</IonLabel>
+                  <IonLabel className='filterLabel'>Free&nbsp;Delivery <br /> Free&nbsp;Return</IonLabel>
                 </IonCol>
               </IonRow>
             </IonCol>

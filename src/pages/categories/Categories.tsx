@@ -1,4 +1,4 @@
-import { IonCard, IonContent, IonHeader, IonLabel, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonPage } from '@ionic/react';
 import CategoryBoxComponent from '../../components/CategoryBoxComponent';
 import Header from '../../components/HeaderComponent';
 

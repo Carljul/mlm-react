@@ -1,4 +1,4 @@
-import { IonCol, IonContent, IonIcon, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, RefresherEventDetail, useIonRouter } from '@ionic/react';
+import { IonCol, IonContent, IonIcon, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, RefresherEventDetail } from '@ionic/react';
 import { thunderstormOutline } from 'ionicons/icons';
 import CardItemListComponent from '../../components/CardItemListComponent';
 import CategoryCircleListComponent from '../../components/CategoryCircleListComponent';

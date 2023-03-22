@@ -9,7 +9,7 @@ import {
 
 import { BiHomeAlt } from "react-icons/bi";
   
-import { homeOutline, gridOutline, cartOutline, receiptOutline, personOutline } from 'ionicons/icons';
+import { gridOutline, cartOutline, receiptOutline, personOutline } from 'ionicons/icons';
 import { Route, Redirect } from 'react-router-dom';
 import Home from './home/Home';
 import Cart from './cart/Cart';
@@ -18,21 +18,23 @@ import Orders from './orders/Orders';
 import Account from './account/Account';
 import Details from './item/details/Details';
 import Shipping from './address/Shipping';
+import Favorites from './favorites/Favorites';
   
 const Navigation: React.FC = () => {
     return (
         <IonTabs>
             {/* Routes */}
             <IonRouterOutlet>
-                <Route path="/" component={Home} />
+                <Route path="/" component={Home}/>
                 <Route path="/app/home" component={Home} />
                 <Route path="/app/categories" component={Categories} />
                 <Route path="/app/cart" component={Cart} />
                 <Route path="/app/orders" component={Orders} />
                 <Route path="/app/account" component={Account} />
-                <Route path="/app/details" component={Details} />
+                <Route path={`/app/details/:id`} component={Details} />
                 <Route path="/app/review" component={Details} />
                 <Route path="/app/shipping" component={Shipping} />
+                <Route path="/app/favorites" component={Favorites} />
                 <Route exact path="/app">
                     <Redirect to="/app/home" />
                 </Route>

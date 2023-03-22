@@ -1,20 +1,24 @@
-import { IonButton, IonButtons, IonHeader, IonIcon, IonLabel, IonTitle, IonToolbar } from '@ionic/react';
-import { cartOutline, personOutline, heartOutline } from 'ionicons/icons';
+import { IonButton, IonButtons, IonHeader, IonLabel, IonTitle, IonToolbar } from '@ionic/react';
+import { AiOutlineHeart } from "react-icons/ai";
+import { FiShoppingCart } from "react-icons/fi";
+import { RxPerson } from "react-icons/rx";
 
 const Header: React.FC = () => {
   return (
       <IonHeader>
         <IonToolbar>
           <IonTitle>
-            <IonIcon icon={personOutline} />
-            <IonLabel>Guest</IonLabel>
+            <div className="d-flex">
+              <RxPerson className='navigation-icon'/>
+              <IonLabel>Guest</IonLabel>
+            </div>
           </IonTitle>
           <IonButtons slot="end">
-            <IonButton routerLink="/app/cart">
-              <IonIcon icon={heartOutline} />
+            <IonButton routerLink="/app/favorites">
+              <AiOutlineHeart className='navigation-icon'/>
             </IonButton>
             <IonButton routerLink="/app/cart">
-              <IonIcon icon={cartOutline} />
+              <FiShoppingCart className='navigation-icon'/>
             </IonButton>
           </IonButtons>
         </IonToolbar>

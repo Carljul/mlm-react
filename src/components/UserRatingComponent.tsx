@@ -6,7 +6,7 @@ const UserRatingComponent: React.FC = () => {
         <IonRow className="mb-3">
             <IonCol size='3'>
                 <IonAvatar>
-                    <img src='https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png'/>
+                    <img src='https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png' alt=""/>
                 </IonAvatar>
             </IonCol>
             <IonCol size='9'>

@@ -17,7 +17,7 @@ const CardItemListComponent: React.FC = () => {
 
     useEffect(() => {
       generateItems();
-    },[])
+    })
     return (
       <>
         <div className='d-grid template-3-columns'>

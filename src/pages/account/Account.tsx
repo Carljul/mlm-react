@@ -37,7 +37,7 @@ const Account: React.FC = () => {
                 setUser(data.data);
             }
         });
-    }, [])
+    })
 
     // Methods
     const goToLogin = () => {

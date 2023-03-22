@@ -1,4 +1,4 @@
-import { IonAvatar, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
+import { IonCol, IonContent, IonGrid, IonIcon, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
 import { chevronDownCircleOutline } from 'ionicons/icons';
 import Header from '../../components/HeaderComponent';
 import TransactionItemComponent from '../../components/TransactionItemComponent';

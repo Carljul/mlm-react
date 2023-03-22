@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface VarationListProps {
     index: string,
@@ -26,10 +26,19 @@ const VariationDropdownComponent: React.FC<VariationProps> = (props: VariationPr
         const selectedItem = event.currentTarget.textContent;
         setIsActive(!isActive);
         setSelected(selectedItem ?? '');
-    }
+    }    
 
     // Checking if dropdown type exists
     const isValidDropdownType = dropdownTypes.includes(props.type);
+
+    const runDownSelecteds = () => {
+        let firstItem = props.list[0].value;
+        setSelected(firstItem.toString());
+    }
+
+    useEffect(() => {
+        runDownSelecteds();
+    });
     return (
         <>
             {
@@ -39,7 +48,7 @@ const VariationDropdownComponent: React.FC<VariationProps> = (props: VariationPr
                         <button className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={toggleNextChild}>
                             <div className="d-flex dropdown-selected-label">
                                 {
-                                    props.type == 'sizes' ?
+                                    props.type === 'sizes' ?
                                     <>
                                         <div>Size</div>
                                         <div className="selected">{selected}</div>
@@ -49,7 +58,7 @@ const VariationDropdownComponent: React.FC<VariationProps> = (props: VariationPr
                                         <div>Color</div>
                                         <div className="selected">
                                             {
-                                                selected != null && selected != '' ?
+                                                selected !== null && selected !== '' ?
                                                 (<div className="color-selected" style={{backgroundColor: selected}}></div>)
                                                 : (<></>)
                                             }
@@ -61,7 +70,7 @@ const VariationDropdownComponent: React.FC<VariationProps> = (props: VariationPr
                         <div className={`dropdown-menu ${isActive ? 'active' : ''}`}>
                             {
                                 props.list.map((item, index) => (
-                                    props.type == 'sizes' ?
+                                    props.type === 'sizes' ?
                                     (<div className="dropdown-item" key={index} data-value={item.index} onClick={onSelectItem}>{item.value}</div>)
                                     :
                                     (<div className="dropdown-item" key={index} data-value={item.index} onClick={onSelectItem}>

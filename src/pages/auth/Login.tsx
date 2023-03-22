@@ -22,11 +22,11 @@ const Login: React.FC = () => {
 
     useEffect(() => {
         getService('/user').then((data) => {
-            if (typeof(data) != 'undefined' && typeof(data) != null) {
+            if (typeof data !== 'undefined' && data !== null) {
                 navigation.push('/app/home', 'root', 'replace');
             }
         })
-    }, [])
+    })
   
 
     const doLogin = (event: React.KeyboardEvent<HTMLFormElement>) => {

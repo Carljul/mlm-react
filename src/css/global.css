@@ -253,7 +253,7 @@ div.color-selected {
     height: 16px;
     border: 1px solid grey;
     float: right;
-    border-radius: 2px;
+    border-radius: 4px;
     background-color: green;
 }
 
@@ -435,5 +435,5 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
 }
 
 .navigation-icon {
-    font-size: 25px !important;
+    font-size: 22px !important;
 }
