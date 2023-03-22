@@ -30,7 +30,7 @@ const SignUp: React.FC = () => {
                 navigation.push('/app/home', 'root', 'replace');
             }
         })
-    })
+    }, [])
 
     const doSignUp = (event: React.KeyboardEvent<HTMLFormElement>) => {
         event.preventDefault();

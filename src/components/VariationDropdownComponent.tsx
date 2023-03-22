@@ -38,7 +38,7 @@ const VariationDropdownComponent: React.FC<VariationProps> = (props: VariationPr
 
     useEffect(() => {
         runDownSelecteds();
-    });
+    }, []);
     return (
         <>
             {

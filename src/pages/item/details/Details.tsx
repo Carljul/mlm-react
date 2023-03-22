@@ -1,10 +1,14 @@
 import { IonButton, IonCol, IonContent, IonGrid, IonLabel, IonPage, IonRouterLink, IonRow } from '@ionic/react';
+import { useParams } from 'react-router';
 import Header from '../../../components/HeaderComponent';
 import UserRatingComponent from '../../../components/UserRatingComponent';
 import VariationDropdownComponent from '../../../components/VariationDropdownComponent';
 
 
 const Details: React.FC = () => {
+  // Parameter from URL
+  const {id} = useParams<{id: string}>();
+
   const sizes = [{
       index: 'xs',
       value: 'XS'
@@ -23,7 +27,7 @@ const Details: React.FC = () => {
     },{
       index: 'xxl',
       value: 'XXL'
-    }];
+  }];
   
   const colors = [{
     index: 'green',
@@ -77,7 +81,7 @@ const Details: React.FC = () => {
               <IonRow>
                 <IonCol>
                   <h4 className='bold'>Reviews</h4>
-                  <IonRouterLink color='success' href='/app/review'>Write your review</IonRouterLink>
+                  <IonRouterLink color='success' href={`/app/review/`+id}>Write your review</IonRouterLink>
                 </IonCol>
               </IonRow>
               <IonRow>

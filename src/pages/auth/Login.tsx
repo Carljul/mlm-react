@@ -2,7 +2,7 @@ import { IonButton, IonCol, IonContent, IonGrid, IonInput, IonItem, IonLabel, Io
 import { useEffect, useRef, useState } from 'react';
 import { useStateContext } from '../../provider/ContextProvider';
 import { validateEmail } from '../../services/validationServices';
-import { getService, postService } from '../../services/httpServices';
+import { getService, postService, serviceStatus } from '../../services/httpServices';
 
 const Login: React.FC = () => {
     // Navigations
@@ -21,13 +21,17 @@ const Login: React.FC = () => {
     const {setToken, setUser} = useStateContext();
 
     useEffect(() => {
-        getService('/user').then((data) => {
-            if (typeof data !== 'undefined' && data !== null) {
-                navigation.push('/app/home', 'root', 'replace');
-            }
-        })
-    })
+        authChecker();
+    }, [])
   
+
+    const authChecker = function () {
+        if (localStorage.getItem('ACCESS_TOKEN') === null) return false;
+        getService('/user').then((data) => {
+            serviceStatus(data.status)
+            navigation.push('/app/home', 'root', 'replace');
+        });
+    }
 
     const doLogin = (event: React.KeyboardEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -36,17 +40,20 @@ const Login: React.FC = () => {
             password: passwordRef.current ? passwordRef.current.value : ''
         }
 
-        postService('/login', payload).then(function (result) {
-            if (result.error || result.errors) {
+        postService('/login', payload).then(function (response) {
+            const data = response.data;
+            if (serviceStatus(response.status)) {
+                setUser(data.user)
+                setToken(data.token)
+                localStorage.removeItem('ACCESS_TOKEN');
+                localStorage.setItem('ACCESS_TOKEN', data.token);
+                navigation.push('/app/home', 'root', 'replace');
+            } else {
                 loginAlert({
                     header: 'Oh oh!',
                     message: 'No user match for given credentials',
                     buttons: ['OK']
                 })
-            } else {
-                setUser(result.user)
-                setToken(result.token)
-                navigation.push('/app/home', 'root', 'replace');
             }
         })
     }

@@ -1,5 +1,4 @@
 import { isPlatform, IonAvatar, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonToast, IonButton, IonRouterLink, useIonRouter } from '@ionic/react';
-import Header from '../../components/HeaderComponent';
 import {
     chevronForward,
     pencilOutline,
@@ -14,8 +13,9 @@ import {
     powerOutline
 } from 'ionicons/icons'; 
 import { useEffect, useState } from 'react';
+import Header from '../../components/HeaderComponent';
 import { useStateContext } from '../../provider/ContextProvider';
-import { getService, postService } from '../../services/httpServices';
+import { getService, postService, serviceStatus } from '../../services/httpServices';
 
 const Account: React.FC = () => {
     // Platform
@@ -28,30 +28,58 @@ const Account: React.FC = () => {
     const [isOpenToast, setIsOpenToast] = useState(true);
     
     // Routes
-    const toLoginNavigation = useIonRouter();
-    const toShippingNavigation = useIonRouter();
+    const pageNavigation = useIonRouter();
 
     useEffect(() => {
-        getService('/user').then((data) => {
-            if (typeof(data) != 'undefined') {
-                setUser(data.data);
-            }
-        });
-    })
+        authChecker();
+    }, [])
 
-    // Methods
+    const authChecker = function () {
+        if (localStorage.getItem('ACCESS_TOKEN') === null) return false;
+        getService('/user').then((data) => {
+            serviceStatus(data.status)
+            setUser(data.data);
+        });
+    }
+
+    // Redirects
     const goToLogin = () => {
-        toLoginNavigation.push('/login', 'root', 'replace');
+        pageNavigation.push('/login', 'root', 'replace');
+    }
+
+    const goToProfile = () => {
+        pageNavigation.push('/app/profile', 'root', 'replace');
+    }
+
+    const goToWisthList = () => {
+        pageNavigation.push('/app/wishlist', 'root', 'replace');
+    }
+
+    const goToOrders = () => {
+        pageNavigation.push('/app/orders', 'root', 'replace');
+    }
+
+    const goToTrackOrders = () => {
+        pageNavigation.push('/app/track/orders', 'root', 'replace');
+    }
+
+    const goToCards = () => {
+        pageNavigation.push('/app/cards', 'root', 'replace');
+    }
+
+    const goToNotifications = () => {
+        pageNavigation.push('/app/notifications', 'root', 'replace');
     }
 
     const goToShipping = () => {
-        toShippingNavigation.push('/app/shipping', 'root', 'replace');
+        pageNavigation.push('/app/shipping', 'root', 'replace');
     }
 
     const logout = () => {
         postService('/logout', {}).then(() => {
             setUser(null);
             setToken(null);
+            localStorage.removeItem('ACCESS_TOKEN');
         })
     }
     
@@ -91,7 +119,7 @@ const Account: React.FC = () => {
                     <IonRow>
                         <IonCol>
                             <IonList>
-                                <IonItem button key="profile">
+                                <IonItem button key="profile" onClick={goToProfile}>
                                     <IonIcon icon={pencilOutline} slot="start" className='profileIcons'></IonIcon>
                                     <IonLabel>Edit Profile</IonLabel>
                                     {isIos ? <></> : <IonIcon icon={chevronForwardOutline} slot="end"></IonIcon>}
@@ -101,7 +129,7 @@ const Account: React.FC = () => {
                                     <IonLabel>Shipping Address</IonLabel>
                                     {isIos ? <></> : <IonIcon icon={chevronForwardOutline} slot="end"></IonIcon>}
                                 </IonItem>
-                                <IonItem button key="wishlist">
+                                <IonItem button key="wishlist" onClick={goToWisthList}>
                                     <IonIcon icon={heartOutline} slot="start" className='profileIcons'></IonIcon>
                                     <IonLabel>Wishlist</IonLabel>
                                     <IonCard className='tagCard'>
@@ -109,22 +137,22 @@ const Account: React.FC = () => {
                                     </IonCard>
                                     {isIos ? <></> : <IonIcon icon={chevronForward} slot="end"></IonIcon>}
                                 </IonItem>
-                                <IonItem button key="history">
+                                <IonItem button key="history" onClick={goToOrders}>
                                     <IonIcon icon={timeOutline} slot="start" className='profileIcons'></IonIcon>
                                     <IonLabel>Order History</IonLabel>
                                     {isIos ? <></> : <IonIcon icon={chevronForward} slot="end"></IonIcon>}
                                 </IonItem>
-                                <IonItem button key="order">
+                                <IonItem button key="order" onClick={goToTrackOrders}>
                                     <IonIcon icon={receiptOutline} slot="start" className='profileIcons'></IonIcon>
                                     <IonLabel>Track Order</IonLabel>
                                     {isIos ? <></> :<IonIcon icon={chevronForward} slot="end"></IonIcon>}
                                 </IonItem>
-                                <IonItem button key="cards">
+                                <IonItem button key="cards" onClick={goToCards}>
                                     <IonIcon icon={cardOutline} slot="start" className='profileIcons'></IonIcon>
                                     <IonLabel>Cards</IonLabel>
                                     {isIos ? <></> :<IonIcon icon={chevronForward} slot="end"></IonIcon>}
                                 </IonItem>
-                                <IonItem button key="notifications">
+                                <IonItem button key="notifications" onClick={goToNotifications}>
                                     <IonIcon icon={notificationsOutline} slot="start" className='profileIcons'></IonIcon>
                                     <IonLabel>Notifications</IonLabel>
                                     {isIos ? <></> :<IonIcon icon={chevronForward} slot="end"></IonIcon>}

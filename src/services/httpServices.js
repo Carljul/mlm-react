@@ -1,55 +1,77 @@
 import axiosClient from '../axios-client.js';
 
 
-// post service
+/**
+ * Post Service
+ * @param {*} uri 
+ * @param {*} payload  
+ */
 export const postService = async (uri, payload) => {
-    try {
-        const response = await axiosClient.post(uri, payload);
-        return response.data;
-    } catch (e) {
-        return {
-            error: true,
-            data: e
-        };
-    }    
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await axiosClient.post(uri, payload);
+            resolve(response)
+        } catch (e) {
+            reject(e)
+        }    
+    });
 }
 
-// get service
+/**
+ * Get Service
+ * @param {*} uri 
+ */
 export const getService = async (uri) => {
-    try {
-        const response = await axiosClient.get(uri);
-        return response;
-    } catch (e) {
-        return {
-            error: true,
-            data: e
-        };
-    }
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await axiosClient.get(uri);
+            resolve(response);
+        } catch (e) {
+            reject(e)
+        }
+    });
 }
 
-// put service
+/**
+ * Put Service
+ * @param {*} uri 
+ * @param {*} payload 
+ */
 export const putService = async (uri, payload) => {
-    try {
-        const response = await axiosClient.put(uri, payload);
-        return response;
-    } catch (e) {
-        return {
-            error: true,
-            data: e
-        };
-    }
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await axiosClient.put(uri, payload);
+            resolve(response)
+        } catch (e) {
+            reject(e)
+        }
+    })
 }
 
-// delete service
+/**
+ * Delete Service
+ * @param {*} uri  
+ */
 export const deleteService = async (uri) => {
-    try {
-        const response = await axiosClient.delete(uri);
-        return response;
-    } catch (e) {
-        return {
-            error: true,
-            data: e
-        };
-    }
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await axiosClient.delete(uri);
+            resolve(response)
+        } catch (e) {
+            reject(e)
+        }
+    })
 }
 
+/**
+ * Service status
+ * @param {*} status 
+ * @returns boolean
+ */
+export const serviceStatus = (status) => {
+    if (status >= 200 && status < 400) {
+        return true;
+    } else if (status >= 400 && status < 600) {
+        return false;
+    }
+}

@@ -17,12 +17,13 @@ const CardItemListComponent: React.FC = () => {
 
     useEffect(() => {
       generateItems();
-    })
+    }, [])
+    
     return (
       <>
         <div className='d-grid template-3-columns'>
           {items.map((item, index) => (
-            <CardItemComponent key={index} name="Fjallraven - Fo" price="$109.95" img="https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png" />
+            <CardItemComponent id={index} key={index} name="Fjallraven - Fo" price="$109.95" img="https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png" />
           ))}
         </div>
         <IonInfiniteScroll

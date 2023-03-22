@@ -1,4 +1,5 @@
 import { IonCard, IonLabel } from "@ionic/react";
+import { Link } from "react-router-dom";
 
 interface CategoryBoxProps {
     category: string,
@@ -7,12 +8,14 @@ interface CategoryBoxProps {
 
 const CategoryBoxComponent: React.FC<CategoryBoxProps> = (props: CategoryBoxProps) => {
     return (
-        <div className='d-block center'>
-            <IonCard className='h-100px'>
-                <img alt={props.category} src={props.img} className='h-100'/>
-                </IonCard>
-            <IonLabel>{props.category}</IonLabel>
-        </div>
+        <Link to={`/app/product/filtered/`+props.category} className="router-category">
+            <div className='d-block center'>
+                <IonCard className='h-100px'>
+                    <img alt={props.category} src={props.img} className='h-100'/>
+                    </IonCard>
+                <IonLabel>{props.category}</IonLabel>
+            </div>
+        </Link>
     );
 }
 

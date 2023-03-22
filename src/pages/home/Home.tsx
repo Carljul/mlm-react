@@ -1,10 +1,10 @@
-import { IonCol, IonContent, IonIcon, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, RefresherEventDetail } from '@ionic/react';
-import { thunderstormOutline } from 'ionicons/icons';
+import { IonCol, IonContent, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, RefresherEventDetail } from '@ionic/react';
 import CardItemListComponent from '../../components/CardItemListComponent';
 import CategoryCircleListComponent from '../../components/CategoryCircleListComponent';
 import FilterComponent from '../../components/FilterComponent';
 import Header from '../../components/HeaderComponent';
 import Notification from '../../components/NotificationComponent';
+import { HiOutlineLightningBolt } from 'react-icons/hi';
 
 const Home: React.FC = () => {
   function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
@@ -24,7 +24,7 @@ const Home: React.FC = () => {
         </IonRefresher>
         
         {/* Search Bar */}
-        <IonSearchbar className='sticky' />
+        <IonSearchbar className='searchBar sticky' />
         
         {/* Notification */}
         <Notification />
@@ -42,7 +42,10 @@ const Home: React.FC = () => {
         {/* Offer Zone */}
         <IonRow>
           <IonCol>
-            <h1>Offer Zone <IonIcon icon={thunderstormOutline} color="primary"></IonIcon></h1>
+            <div className="d-flex center-align">
+              <h1>Offer Zone</h1>
+              <HiOutlineLightningBolt className='offerZoneIcon' />
+            </div>
           </IonCol>
         </IonRow>
 
