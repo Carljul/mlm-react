@@ -1,4 +1,4 @@
-import { IonAvatar, IonItem, IonLabel } from "@ionic/react";
+import { IonAvatar, IonItem, IonLabel, useIonRouter } from "@ionic/react";
 
 interface TransactionItemProps {
     id: number,
@@ -17,9 +17,14 @@ const TransactionItemComponent: React.FC<TransactionItemProps> = ({
     amount,
     transaction = "success"
 }) => {
+    const navigation = useIonRouter()
 
+    const viewHistory = (id: number) => {
+        navigation.push('/app/orders/'+id, 'root', 'replace');
+    }
+    
     return (        
-        <IonItem button className='transactionItems'>
+        <IonItem button className='transactionItems' onClick={() => viewHistory(id)}>
             {
                 img == null ?
                 <div className="transactionCircle ion-color-success"></div>

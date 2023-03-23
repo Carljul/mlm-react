@@ -27,7 +27,11 @@ const Home: React.FC = () => {
         <IonSearchbar className='searchBar sticky' />
         
         {/* Notification */}
-        <Notification />
+        <Notification
+          id={1}
+          goal="Delivering to"
+          message='Delhi - 324423'
+        />
 
         {/* Category */}
         <IonRow>

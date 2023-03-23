@@ -31,6 +31,7 @@ import Notifications from './notifications/Notifications';
 import OrderDetails from './orders/details/Details';
 import Review from './item/review/Review';
 import Filtered from './filtered/Filtered';
+import NotificationDetails from './notifications/details/Details';
   
 const Navigation: React.FC = () => {
     return (
@@ -56,6 +57,7 @@ const Navigation: React.FC = () => {
                 <Route path="/app/track/orders" component={Track} />
                 <Route path="/app/cards" component={Cards} />
                 <Route path="/app/notifications" component={Notifications} />
+                <Route path="/app/notification/details/:id" component={NotificationDetails} />
                 <Route exact path="/app">
                     <Redirect to="/app/home" />
                 </Route>

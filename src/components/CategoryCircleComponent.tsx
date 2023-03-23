@@ -2,18 +2,19 @@ import { IonAvatar, IonLabel } from '@ionic/react';
 import { Link } from 'react-router-dom';
 
 interface CategoryCircleProps {
+  id: number,
   img?: string | null,
   label?: string | null
 }
 
-const CategoryCircle: React.FC<CategoryCircleProps> = ({img, label}) => {
+const CategoryCircle: React.FC<CategoryCircleProps> = (props: CategoryCircleProps) => {
   return (
-    <Link to={`/app/product/filtered/`+label} className="categoryCircles">
+    <Link to={`/app/product/filtered/`+props.id} className="categoryCircles">
       <div className="categoryGroup">
         <IonAvatar className="categoryCircle">
-            {img && <img alt="Silhouette of a person's head" src={img} />}
+            {props.img && <img alt="Silhouette of a person's head" src={props.img} />}
         </IonAvatar>
-        <IonLabel>{label}</IonLabel>
+        <IonLabel>{props.label}</IonLabel>
       </div>
     </Link>
   );

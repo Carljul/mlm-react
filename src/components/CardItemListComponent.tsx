@@ -1,6 +1,7 @@
 import { IonInfiniteScroll, IonInfiniteScrollContent } from "@ionic/react";
 import { useEffect, useState } from "react";
 import CardItemComponent from "./CardItemComponent";
+import menClothes from '../assets/img/men_clothes.jpg';
 
 
 const CardItemListComponent: React.FC = () => {
@@ -23,7 +24,7 @@ const CardItemListComponent: React.FC = () => {
       <>
         <div className='d-grid template-3-columns'>
           {items.map((item, index) => (
-            <CardItemComponent id={index} key={index} name="Fjallraven - Fo" price="$109.95" img="https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png" />
+            <CardItemComponent id={index} key={index} name="Fjallraven - Fo" price="$109.95" img={menClothes} />
           ))}
         </div>
         <IonInfiniteScroll

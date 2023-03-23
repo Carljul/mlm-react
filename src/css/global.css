@@ -71,6 +71,11 @@ ion-item {
     display: inline-flex;
 }
 
+.cicrcleCategoryList .item .item-inner {
+    padding-inline-start: 0 !important;
+    padding-inline-end: 0 !important;
+}
+
 .categoryScroll {
     width: 100%;
     overflow-x: scroll;
@@ -406,36 +411,74 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
     align-items: center;
 }
 
-.cartItems {
-    border: 2px solid var(--ion-color-base);
-    border-radius: 4px;
-    height: 145px;
-    position: relative;
-    margin-bottom: 10px;
+.cardItems .cardItem {
+    display: flex !important;
 }
+
+.cartItems {
+    width: 100%;
+    border: 1px solid green;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 2px;
+    position: relative;
+}
+
+.cartItems .img {
+    width: 40%;
+    margin-right: 10px;
+}
+.cartItems .description {
+    width: 60%;
+    margin-right: 10px;
+}
+
+.cartItems .description ion-label {
+    display: block;
+}
+
+.cartItems .description ion-label.title {
+    font-weight: bold;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cartItems .description a {
+    text-decoration: none;
+    color: #000;
+}
+.cartItems .description ion-label.variation {
+    background-color: rgb(228, 227, 227);
+    color: #aaaaaa;
+    padding: 4px;
+    border-radius: 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
 .cartItems:last-child {
-    margin-bottom: 100px;
+    margin-bottom: 100px !important;
 }
 .cartItems ion-label {
     margin-bottom: 10px;
 }
 
 .cartItems .countItemMultiplier {
-    position: absolute;
-    bottom: 2px;
     display: flex;
     justify-content: space-around;
     background-color: rgb(211, 211, 211);
     border-radius: 6px;
-    padding: 5px 10px;
-    width: 150px;
+    padding: 0 6px;
+    width: 80px;
     text-align: center;
 }
 .cartItems .countItemMultiplier ion-icon {
     align-self: center;
 }
 .cartItems .countItemMultiplier ion-input{
-    width: 50px;
+    width: 30px;
     background-color: transparent;
     border: 0;
     text-align: center;
@@ -448,6 +491,7 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
 .checkoutContainer {
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     background-color: #fff;
     padding: 10px 0;
@@ -483,4 +527,27 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
 .offerZoneIcon {
     font-size: 30px;
     color: gold;
+}
+
+.m-0 {
+    margin: 0 !important;
+}
+
+.mb-1 {
+    margin-bottom: 1rem !important;
+}
+
+.linkNoDesign {
+    text-decoration: none;
+    color: #000;
+}
+
+.success {
+    color: #2dd36f;
+}
+
+.orders-arrow-icon {
+    font-size: 30px;
+    position: absolute;
+    right: 0;
 }

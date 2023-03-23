@@ -1,12 +1,14 @@
 import { IonCol, IonContent, IonGrid, IonIcon, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
 import { chevronDownCircleOutline } from 'ionicons/icons';
+import { TbSquareRoundedArrowDown } from 'react-icons/tb';
 import Header from '../../components/HeaderComponent';
 import TransactionItemComponent from '../../components/TransactionItemComponent';
+import manCategory from '../../assets/img/men_category.jpg';
 
 const Orders: React.FC = () => {
   const transactions = [{
       id: 1,
-      img: 'https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png',
+      img: manCategory,
       name: 'Nathaniel', 
       datetime: '19 Jan 2023 05:30 pm',
       amount: '$15.00',
@@ -27,7 +29,7 @@ const Orders: React.FC = () => {
       transaction: 'danger'
   },{
     id: 4,
-    img: 'https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png',
+    img: manCategory,
     name: 'Nathaniel', 
     datetime: '19 Jan 2023 05:30 pm',
     amount: '$15.00',
@@ -46,7 +48,7 @@ const Orders: React.FC = () => {
                   <IonLabel color='success'>$98.5</IonLabel>
                 </IonCol>
                 <IonCol>
-                  <IonIcon icon={chevronDownCircleOutline} color='success' className='float-right'></IonIcon>
+                  <TbSquareRoundedArrowDown className='success orders-arrow-icon' />
                 </IonCol>
               </IonRow>
             </IonGrid>
