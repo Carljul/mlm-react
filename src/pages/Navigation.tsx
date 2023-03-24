@@ -23,7 +23,6 @@ import Orders from './orders/Orders';
 import Account from './account/Account';
 import ProductDetails from './item/details/Details';
 import Shipping from './address/Shipping';
-import Favorites from './favorites/Favorites';
 import Wishlist from './wishlist/Wishlist';
 import Track from './orders/track/Track';
 import Cards from './cards/Cards';
@@ -32,6 +31,9 @@ import OrderDetails from './orders/details/Details';
 import Review from './item/review/Review';
 import Filtered from './filtered/Filtered';
 import NotificationDetails from './notifications/details/Details';
+import Profile from './profile/Profile';
+import Wallet from './wallet/Wallet';
+import Genealogy from './genealogy/Genealogy';
   
 const Navigation: React.FC = () => {
     return (
@@ -44,18 +46,20 @@ const Navigation: React.FC = () => {
                 <Route path={`/app/product/details/:id`} component={ProductDetails} />
                 <Route path={`/app/review/:id`} component={Review} />
                 <Route path={`/app/product/filtered/:filter`} component={Filtered} />
+                <Route path="/app/profile" component={Profile} />
 
                 <Route path="/app/categories" component={Categories} />
                 <Route path="/app/cart" component={Cart} />
                 <Route path="/app/orders" component={Orders} />
-                <Route path={`/app/orders/:id`} component={OrderDetails} />
+                <Route path={`/app/order/:id`} component={OrderDetails} />
                 <Route path="/app/account" component={Account} />
                 
                 <Route path="/app/shipping" component={Shipping} />
-                <Route path="/app/favorites" component={Favorites} />
                 <Route path="/app/wishlist" component={Wishlist} />
                 <Route path="/app/track/orders" component={Track} />
                 <Route path="/app/cards" component={Cards} />
+                <Route path="/app/wallet" component={Wallet} />
+                <Route path="/app/genealogy" component={Genealogy} />
                 <Route path="/app/notifications" component={Notifications} />
                 <Route path="/app/notification/details/:id" component={NotificationDetails} />
                 <Route exact path="/app">

@@ -22,6 +22,17 @@ ion-item {
     padding: 10px;
     border-radius: 8px;
     color: black;
+    width: 54px;
+    height: 54px;
+    position: relative;
+}
+
+.profileIcons svg {
+    font-size: 28px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .tagCard {
@@ -402,6 +413,10 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
     margin: 10px 0;
 }
 
+.transparent-bg {
+    background-color: transparent;
+}
+
 .transactionDateTime {
     color: grey;
     font-size: 12px;
@@ -550,4 +565,22 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
     font-size: 30px;
     position: absolute;
     right: 0;
+}
+
+.walletBalance {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.actions-menu {
+    padding: 0;
+}
+
+.actions-menu .item {
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.tracakOrderMenuIcon {
+    transform: scale(-1, 1) translate(50%, -50%) !important;
 }

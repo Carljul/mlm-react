@@ -1,5 +1,4 @@
-import { IonCol, IonContent, IonGrid, IonIcon, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
-import { chevronDownCircleOutline } from 'ionicons/icons';
+import { IonCol, IonContent, IonGrid, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
 import { TbSquareRoundedArrowDown } from 'react-icons/tb';
 import Header from '../../components/HeaderComponent';
 import TransactionItemComponent from '../../components/TransactionItemComponent';
@@ -40,12 +39,12 @@ const Orders: React.FC = () => {
   return (
     <IonPage>
         <Header />
-        <IonContent className='ion-padding'>
+        <IonContent color="light" className='ion-padding'>
             <IonGrid>
               <IonRow>
                 <IonCol>
                   <IonLabel color='success'>Balance: </IonLabel>
-                  <IonLabel color='success'>$98.5</IonLabel>
+                  <IonLabel color='success' className='walletBalance'>$98.5</IonLabel>
                 </IonCol>
                 <IonCol>
                   <TbSquareRoundedArrowDown className='success orders-arrow-icon' />
@@ -53,7 +52,7 @@ const Orders: React.FC = () => {
               </IonRow>
             </IonGrid>
             
-            <IonList>
+            <IonList className='transparent-bg'>
               {
                 transactions.map((item, index) => (
                     <TransactionItemComponent key={index}

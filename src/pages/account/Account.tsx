@@ -1,17 +1,25 @@
 import { isPlatform, IonAvatar, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonToast, IonButton, IonRouterLink, useIonRouter } from '@ionic/react';
+
+// CSS
+import '../../css/Accounts.modules.css';
+
+// Icons
 import {
     chevronForward,
-    pencilOutline,
-    locationOutline,
-    heartOutline,
-    timeOutline,
-    receiptOutline,
-    cardOutline,
-    notificationsOutline,
     closeCircle,
-    chevronForwardOutline,
-    powerOutline
+    chevronForwardOutline
 } from 'ionicons/icons'; 
+import { FiEdit3 } from 'react-icons/fi';
+import { GrLocation } from 'react-icons/gr';
+import { AiOutlineHeart } from 'react-icons/ai';
+import { BiTimeFive } from 'react-icons/bi';
+import { BsBoxSeam } from 'react-icons/bs';
+import { FiCreditCard } from 'react-icons/fi';
+import { IoWalletOutline } from 'react-icons/io5';
+import { FcGenealogy } from 'react-icons/fc';
+import { IoIosNotificationsOutline } from 'react-icons/io';
+import { RiLogoutBoxRLine } from 'react-icons/ri';
+
 import { useEffect, useState } from 'react';
 import Header from '../../components/HeaderComponent';
 import { useStateContext } from '../../provider/ContextProvider';
@@ -39,40 +47,12 @@ const Account: React.FC = () => {
         getService('/user').then((data) => {
             serviceStatus(data.status)
             setUser(data.data);
+            console.log(user);
         });
     }
 
-    // Redirects
-    const goToLogin = () => {
-        pageNavigation.push('/login', 'root', 'replace');
-    }
-
-    const goToProfile = () => {
-        pageNavigation.push('/app/profile', 'root', 'replace');
-    }
-
-    const goToWisthList = () => {
-        pageNavigation.push('/app/wishlist', 'root', 'replace');
-    }
-
-    const goToOrders = () => {
-        pageNavigation.push('/app/orders', 'root', 'replace');
-    }
-
-    const goToTrackOrders = () => {
-        pageNavigation.push('/app/track/orders', 'root', 'replace');
-    }
-
-    const goToCards = () => {
-        pageNavigation.push('/app/cards', 'root', 'replace');
-    }
-
-    const goToNotifications = () => {
-        pageNavigation.push('/app/notifications', 'root', 'replace');
-    }
-
-    const goToShipping = () => {
-        pageNavigation.push('/app/shipping', 'root', 'replace');
+    const navigateToPage = (route: string) => {
+        pageNavigation.push(route, 'root', 'replace');
     }
 
     const logout = () => {
@@ -96,7 +76,7 @@ const Account: React.FC = () => {
                                 </IonAvatar>
                             </IonCol>
                             <IonCol>
-                                <h1>{user.name}</h1>
+                                <h1>{user.person?.fullname ?? ''}&nbsp;</h1>
                                 <p>{user.email}</p>
                             </IonCol>
                         </IonRow>
@@ -104,7 +84,7 @@ const Account: React.FC = () => {
                         <>
                             <IonRow>
                                 <IonCol>
-                                    <IonButton expand='full' onClick={goToLogin}>
+                                    <IonButton expand='full' onClick={() => {navigateToPage('/login')}}>
                                         Login
                                     </IonButton>
                                 </IonCol>
@@ -118,42 +98,70 @@ const Account: React.FC = () => {
                     }
                     <IonRow>
                         <IonCol>
-                            <IonList>
-                                <IonItem button key="profile" onClick={goToProfile}>
-                                    <IonIcon icon={pencilOutline} slot="start" className='profileIcons'></IonIcon>
+                            <IonList className="actions-menu">
+                                <IonItem button key="profile" onClick={() => {navigateToPage('/app/profile')}}>
+                                    <div slot="start" className='profileIcons'>
+                                        <FiEdit3 />
+                                    </div>
                                     <IonLabel>Edit Profile</IonLabel>
                                     {isIos ? <></> : <IonIcon icon={chevronForwardOutline} slot="end"></IonIcon>}
                                 </IonItem>
-                                <IonItem button key="shipping" onClick={goToShipping}>
-                                    <IonIcon icon={locationOutline} slot="start" className='profileIcons'></IonIcon>
+                                <IonItem button key="shipping" onClick={() => {navigateToPage('/app/shipping')}}>
+                                    <div slot="start" className='profileIcons'>
+                                        <GrLocation />
+                                    </div>
                                     <IonLabel>Shipping Address</IonLabel>
                                     {isIos ? <></> : <IonIcon icon={chevronForwardOutline} slot="end"></IonIcon>}
                                 </IonItem>
-                                <IonItem button key="wishlist" onClick={goToWisthList}>
-                                    <IonIcon icon={heartOutline} slot="start" className='profileIcons'></IonIcon>
+                                <IonItem button key="wishlist" onClick={() => {navigateToPage('/app/wishlist')}}>
+                                    <div slot="start" className="profileIcons">
+                                        <AiOutlineHeart />
+                                    </div>
                                     <IonLabel>Wishlist</IonLabel>
                                     <IonCard className='tagCard'>
                                         <IonCardContent>New</IonCardContent>
                                     </IonCard>
                                     {isIos ? <></> : <IonIcon icon={chevronForward} slot="end"></IonIcon>}
                                 </IonItem>
-                                <IonItem button key="history" onClick={goToOrders}>
-                                    <IonIcon icon={timeOutline} slot="start" className='profileIcons'></IonIcon>
+                                <IonItem button key="history" onClick={() => {navigateToPage('/app/orders')}}>
+                                    <div slot="start" className="profileIcons">
+                                        <BiTimeFive />
+                                    </div>
                                     <IonLabel>Order History</IonLabel>
                                     {isIos ? <></> : <IonIcon icon={chevronForward} slot="end"></IonIcon>}
                                 </IonItem>
-                                <IonItem button key="order" onClick={goToTrackOrders}>
-                                    <IonIcon icon={receiptOutline} slot="start" className='profileIcons'></IonIcon>
+                                <IonItem button key="order" onClick={() => {navigateToPage('/app/track/orders')}}>
+                                    <div slot="start" className="profileIcons">
+                                        <BsBoxSeam className="tracakOrderMenuIcon"/>
+                                    </div>
                                     <IonLabel>Track Order</IonLabel>
                                     {isIos ? <></> :<IonIcon icon={chevronForward} slot="end"></IonIcon>}
                                 </IonItem>
-                                <IonItem button key="cards" onClick={goToCards}>
-                                    <IonIcon icon={cardOutline} slot="start" className='profileIcons'></IonIcon>
+                                <IonItem button key="cards" onClick={() => {navigateToPage('/app/cards')}}>
+                                    <div slot="start" className="profileIcons">
+                                        <FiCreditCard />
+                                    </div>
                                     <IonLabel>Cards</IonLabel>
                                     {isIos ? <></> :<IonIcon icon={chevronForward} slot="end"></IonIcon>}
                                 </IonItem>
-                                <IonItem button key="notifications" onClick={goToNotifications}>
-                                    <IonIcon icon={notificationsOutline} slot="start" className='profileIcons'></IonIcon>
+                                <IonItem button key="wallets" onClick={() => {navigateToPage('/app/wallet')}}>
+                                    <div slot="start" className="profileIcons">
+                                        <IoWalletOutline />
+                                    </div>
+                                    <IonLabel>Wallets</IonLabel>
+                                    {isIos ? <></> :<IonIcon icon={chevronForward} slot="end"></IonIcon>}
+                                </IonItem>
+                                <IonItem button key="genealogy" onClick={() => {navigateToPage('/app/genealogy')}}>
+                                    <div slot="start" className="profileIcons">
+                                        <FcGenealogy />
+                                    </div>
+                                    <IonLabel>Genealogy</IonLabel>
+                                    {isIos ? <></> :<IonIcon icon={chevronForward} slot="end"></IonIcon>}
+                                </IonItem>
+                                <IonItem button key="notifications" onClick={() => {navigateToPage('/app/notifications')}}>
+                                    <div slot="start" className="profileIcons">
+                                        <IoIosNotificationsOutline />
+                                    </div>
                                     <IonLabel>Notifications</IonLabel>
                                     {isIos ? <></> :<IonIcon icon={chevronForward} slot="end"></IonIcon>}
                                 </IonItem>
@@ -161,7 +169,9 @@ const Account: React.FC = () => {
                                 {
                                     user ?
                                     <IonItem button key="logout" onClick={logout}>
-                                        <IonIcon icon={powerOutline} slot="start" className='profileIcons'></IonIcon>
+                                        <div slot="start" className="profileIcons">
+                                            <RiLogoutBoxRLine />
+                                        </div>
                                         <IonLabel>Logout</IonLabel>
                                         {isIos ? <></> :<IonIcon icon={chevronForward} slot="end"></IonIcon>}
                                     </IonItem>

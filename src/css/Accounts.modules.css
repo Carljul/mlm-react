@@ -1,0 +1,3 @@
+.actions-menu ion-item::part(native) {
+    padding: 0;
+}

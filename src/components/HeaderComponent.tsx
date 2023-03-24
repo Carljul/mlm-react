@@ -14,7 +14,7 @@ const Header: React.FC = () => {
             </div>
           </IonTitle>
           <IonButtons slot="end">
-            <IonButton routerLink="/app/favorites">
+            <IonButton routerLink="/app/wishlist">
               <AiOutlineHeart className='navigation-icon'/>
             </IonButton>
             <IonButton routerLink="/app/cart">

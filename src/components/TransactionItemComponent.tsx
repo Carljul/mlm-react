@@ -1,4 +1,5 @@
 import { IonAvatar, IonItem, IonLabel, useIonRouter } from "@ionic/react";
+import '../css/TransactionItemComponent.modules.css';
 
 interface TransactionItemProps {
     id: number,
@@ -6,39 +7,32 @@ interface TransactionItemProps {
     name: string, 
     datetime: string,
     amount: string,
-    transaction: string
+    transaction?: string | "success"
 }
 
-const TransactionItemComponent: React.FC<TransactionItemProps> = ({
-    id,
-    img,
-    name,
-    datetime,
-    amount,
-    transaction = "success"
-}) => {
-    const navigation = useIonRouter()
+const TransactionItemComponent: React.FC<TransactionItemProps> = (props: TransactionItemProps) => {
+    const navigation = useIonRouter();
 
-    const viewHistory = (id: number) => {
-        navigation.push('/app/orders/'+id, 'root', 'replace');
+    const viewHistory = (idToVisit: number) => {
+        navigation.push('/app/order/'+idToVisit, 'root', 'replace');
     }
-    
+
     return (        
-        <IonItem button className='transactionItems' onClick={() => viewHistory(id)}>
+        <IonItem button className='transactionItems transparent-bg' onClick={() => {viewHistory(props.id)}}>
             {
-                img == null ?
+                props.img == null ?
                 <div className="transactionCircle ion-color-success"></div>
                 :
                 <IonAvatar slot='start'>
-                    <img src={img} alt="Nathaniel" />
+                    <img src={props.img} alt="Nathaniel" />
                 </IonAvatar>
             }
             <div className="d-block">
-                <IonLabel className='transactionName'>{name}</IonLabel>
-                <span className='transactionDateTime'>{datetime}</span>
+                <IonLabel className='transactionName'>{props.name}</IonLabel>
+                <span className='transactionDateTime'>{props.datetime}</span>
             </div>
-            <IonLabel slot='end' color={transaction} className='transactionAmount'>
-                {amount}
+            <IonLabel slot='end' color={props.transaction} className='transactionAmount'>
+                {props.amount}
             </IonLabel>
         </IonItem>
     );
