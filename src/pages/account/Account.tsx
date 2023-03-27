@@ -47,7 +47,6 @@ const Account: React.FC = () => {
         getService('/user').then((data) => {
             serviceStatus(data.status)
             setUser(data.data);
-            console.log(user);
         });
     }
 
@@ -183,7 +182,7 @@ const Account: React.FC = () => {
                     </IonRow>
                 </IonGrid>
                 {/* Toast */}
-                <IonToast
+                {/* <IonToast
                     isOpen={isOpenToast}
                     message="Got a component with the name 'index' for the ..."
                     buttons={[{
@@ -195,7 +194,7 @@ const Account: React.FC = () => {
                         icon: closeCircle,
                         handler: () => {setIsOpenToast(false)}
                     }]}
-                />
+                /> */}
             </IonContent>
         </IonPage>
     );

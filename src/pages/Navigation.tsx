@@ -1,4 +1,5 @@
 import {
+    IonBadge,
     IonIcon,
     IonLabel,
     IonRouterOutlet,
@@ -34,6 +35,7 @@ import NotificationDetails from './notifications/details/Details';
 import Profile from './profile/Profile';
 import Wallet from './wallet/Wallet';
 import Genealogy from './genealogy/Genealogy';
+import AddCards from './cards/AddCard';
   
 const Navigation: React.FC = () => {
     return (
@@ -57,7 +59,10 @@ const Navigation: React.FC = () => {
                 <Route path="/app/shipping" component={Shipping} />
                 <Route path="/app/wishlist" component={Wishlist} />
                 <Route path="/app/track/orders" component={Track} />
+
                 <Route path="/app/cards" component={Cards} />
+                <Route path="/app/card/add" component={AddCards} />
+
                 <Route path="/app/wallet" component={Wallet} />
                 <Route path="/app/genealogy" component={Genealogy} />
                 <Route path="/app/notifications" component={Notifications} />
@@ -81,7 +86,7 @@ const Navigation: React.FC = () => {
 
                 <IonTabButton tab="cart" href="/app/cart">
                     <FiShoppingCart className='navigation-icon'/>
-                    <IonLabel>Cart</IonLabel>
+                    <IonLabel>Cart <IonBadge slot='end' color='danger' className='badgeNotification float'>11</IonBadge></IonLabel>
                 </IonTabButton>
 
                 <IonTabButton tab="orders" href="/app/orders">

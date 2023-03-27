@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 ::-webkit-scrollbar {
     display: none;
     scrollbar-width: none; /* Firefox */
@@ -32,7 +39,9 @@ ion-item {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 }
 
 .tagCard {
@@ -60,6 +69,8 @@ ion-item {
     background-color: #cef1e1;
     padding: 10px;
     margin: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 
@@ -79,12 +90,16 @@ ion-item {
 }
 
 .cicrcleCategoryList {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
 }
 
 .cicrcleCategoryList .item .item-inner {
-    padding-inline-start: 0 !important;
-    padding-inline-end: 0 !important;
+    -webkit-padding-start: 0 !important;
+            padding-inline-start: 0 !important;
+    -webkit-padding-end: 0 !important;
+            padding-inline-end: 0 !important;
 }
 
 .categoryScroll {
@@ -114,24 +129,34 @@ ion-item {
 }
 
 .d-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 
 .d-grid {
+    display: -ms-grid;
     display: grid;
 }
 
 .template-3-columns {
+    -ms-grid-columns: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 .space-between {
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 .space-evenly {
-    justify-content: space-evenly;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
 }
 
 .card {
@@ -163,7 +188,8 @@ ion-item {
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
 }
 
 .itemImage {
@@ -177,7 +203,8 @@ ion-item {
     height: 100%;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
 }
 
 .itemPrice {
@@ -305,7 +332,8 @@ div.color-selected {
 }
 
 .text-ellips {
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
@@ -362,7 +390,9 @@ ion-radio.shippingRadio {
     width: 30px;
     height: 30px;
     border-radius: 100px;
-    align-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
 }
 
 ion-radio.shippingRadio::part(container) {
@@ -375,8 +405,12 @@ ion-radio.shippingRadio::part(container) {
 
 ion-radio.shippingRadio::part(mark) {
     background: none;
+    -webkit-transition: none;
+    -o-transition: none;
     transition: none;
-    transform: none;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
     border-radius: 0;
 }
 
@@ -393,7 +427,11 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
     border-style: solid;
     border-color: #fff;
 
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+
+        -ms-transform: rotate(45deg);
+
+            transform: rotate(45deg);
 }
 
 .transactionCircle {
@@ -423,10 +461,14 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
 }
 
 .center-align {
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .cardItems .cardItem {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
     display: flex !important;
 }
 
@@ -458,7 +500,8 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
 }
 .cartItems .description a {
     text-decoration: none;
@@ -481,8 +524,11 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
 }
 
 .cartItems .countItemMultiplier {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     background-color: rgb(211, 211, 211);
     border-radius: 6px;
     padding: 0 6px;
@@ -490,7 +536,9 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
     text-align: center;
 }
 .cartItems .countItemMultiplier ion-icon {
-    align-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
 }
 .cartItems .countItemMultiplier ion-input{
     width: 30px;
@@ -582,5 +630,130 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
 }
 
 .tracakOrderMenuIcon {
-    transform: scale(-1, 1) translate(50%, -50%) !important;
+    -webkit-transform: scale(-1, 1) translate(50%, -50%) !important;
+        -ms-transform: scale(-1, 1) translate(50%, -50%) !important;
+            transform: scale(-1, 1) translate(50%, -50%) !important;
+}
+
+.pt-0 {
+    padding-top: 0 !important;
+}
+
+.card_inputs {
+    margin-top: 20px;
+    padding: 10px;
+    position: relative;
+    display: block;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+}
+
+.card_inputs ion-item {
+    margin-bottom: 10px;
+}
+
+.card_inputs ion-button {
+    position: absolute;
+    bottom: 0;
+    width: -webkit-fill-available;
+}
+
+.card_inputs ion-item ion-input {
+    /* position: absolute; */
+    height: 40px !important;
+}
+
+
+.card-list-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100%;
+}
+
+.card-container-flex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100%;
+}
+
+
+.card-container-flex > *,
+.card-list-flex > * {
+    margin: 0;
+}
+
+.card-container-flex .rccs {
+    margin: 0 auto;
+}
+
+.card-container-flex > :first-child {
+    -webkit-box-flex: .1;
+        -ms-flex: .1;
+            flex: .1;
+}
+
+.card-list-flex > :first-child {
+    -webkit-box-flex: 0.05;
+        -ms-flex: 0.05;
+            flex: 0.05;
+}
+
+.card-container-flex > :nth-child(2) {
+    -webkit-box-flex: .5;
+        -ms-flex: .5;
+            flex: .5;
+}
+
+.card-container-flex > :last-child,
+.card-list-flex > :last-child {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+}
+
+.card-list-flex .title {
+    font-size: 20px;
+    font-weight: bold !important;
+    position: relative;
+    top: -10px;
+}
+
+.card-list-flex a {
+    text-decoration: none;
+    width: 100%;
+}
+.card-list-flex .card-new {
+    width: inherit;
+    height: 200px;
+    border: 2px dashed black;
+    position: relative;
+    border-radius: 20px;
+}
+.card-list-flex .card-new h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.badgeNotification {
+    border-radius: 100px;
+    top: 4px;
+}
+
+.badgeNotification.float {
+    position: absolute;
+    top: 5px;
 }

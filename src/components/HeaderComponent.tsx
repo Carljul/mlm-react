@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonHeader, IonLabel, IonTitle, IonToolbar } from '@ionic/react';
+import { IonBadge, IonButton, IonButtons, IonHeader, IonLabel, IonTitle, IonToolbar } from '@ionic/react';
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { RxPerson } from "react-icons/rx";
@@ -19,6 +19,7 @@ const Header: React.FC = () => {
             </IonButton>
             <IonButton routerLink="/app/cart">
               <FiShoppingCart className='navigation-icon'/>
+              <IonBadge slot='end' color='danger' className='badgeNotification'>11</IonBadge>
             </IonButton>
           </IonButtons>
         </IonToolbar>
