@@ -33,8 +33,33 @@ const Login: React.FC = () => {
         });
     }
 
-    const doLogin = (event: React.KeyboardEvent<HTMLFormElement>) => {
+    const formLogin = (event: React.KeyboardEvent<HTMLFormElement>) => {
         event.preventDefault();
+        doLogin()
+    }
+
+    const validate = (ev: Event) => {
+        const value = (ev.target as HTMLInputElement).value;
+    
+        setIsValid(undefined);
+    
+        if (value === '') return;
+    
+        validateEmail(value) !== null ? setIsValid(true) : setIsValid(false);
+    };
+    
+    const markTouched = () => {
+        setIsTouched(true);
+    };
+
+    const handleEnterKey = (event: React.KeyboardEvent<HTMLIonInputElement>) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            doLogin()
+        }
+    }
+
+    const doLogin = () => {
         const payload = {
             email: emailRef.current ? emailRef.current.value : '',
             password: passwordRef.current ? passwordRef.current.value : ''
@@ -58,24 +83,10 @@ const Login: React.FC = () => {
         })
     }
 
-    const validate = (ev: Event) => {
-        const value = (ev.target as HTMLInputElement).value;
-    
-        setIsValid(undefined);
-    
-        if (value === '') return;
-    
-        validateEmail(value) !== null ? setIsValid(true) : setIsValid(false);
-    };
-    
-    const markTouched = () => {
-        setIsTouched(true);
-    };
-
     return (
         <IonPage>
             <IonContent className="ion-padding">
-                <form onSubmit={doLogin}>
+                <form onSubmit={formLogin}>
                     <IonGrid>
                         <IonRow>
                             <IonCol>
@@ -101,7 +112,7 @@ const Login: React.FC = () => {
                             <IonCol>
                                 <IonItem fill='outline'>
                                     <IonLabel position="floating">Password</IonLabel>
-                                    <IonInput type="password" ref={passwordRef}/>
+                                    <IonInput type="password" ref={passwordRef} onKeyPress={handleEnterKey}/>
                                 </IonItem>
                             </IonCol>
                         </IonRow>
