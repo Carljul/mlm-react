@@ -222,7 +222,7 @@ ion-item {
 }
 
 .p-0 {
-    padding: 0;
+    padding: 0 !important;
 }
 .mr-1 {
     margin-right: 10px;
@@ -507,7 +507,8 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
     text-decoration: none;
     color: #000;
 }
-.cartItems .description ion-label.variation {
+.cartItems .description ion-label.variation,
+.order-track-details .variation {
     background-color: rgb(228, 227, 227);
     color: #aaaaaa;
     padding: 4px;
@@ -756,4 +757,60 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
 .badgeNotification.float {
     position: absolute;
     top: 5px;
+}
+
+.notification-card-link {
+    text-decoration: none;
+}
+
+.notification-card-link .description > * {
+    font-size: 12px;
+    line-height: 1;
+    display: block;
+    color: grey;
+}
+
+.order-track-card {
+    background-color: #fff;
+    margin: 10px 0;
+}
+
+.order-track-courier-status ion-label {
+    font-size: 12px;
+}
+
+.order-track-details ion-label > * {
+    display: block;
+}
+
+.order-track-details ion-label .product_name {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-line;
+}
+
+
+.two-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-line;
+}
+
+.delivery_date {
+    margin: 0 !important;
+}
+
+.grey-color {
+    color: grey;
+}
+
+.storeLink {
+    text-decoration: none;
+    font-size: 12px;
 }

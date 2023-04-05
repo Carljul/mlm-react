@@ -10,7 +10,6 @@ const Notifications: React.FC = () => {
         date: '06/23/2023',
         title: 'Your Parcel has been delivered',
         description: `<span>Order # 6123987215489213</span>
-        <br />
         <span>Tracking # MP243234</span>`,
         img: "https://ionicframework.com/docs/img/demos/avatar.svg"
     },{
@@ -20,7 +19,6 @@ const Notifications: React.FC = () => {
         product_name: 'Some Item',
         title: 'Your Parcel is pending',
         description: `<span>Order # 6123987215489213</span>
-        <br />
         <span>Tracking # MP243234</span>`,
         img: "https://ionicframework.com/docs/img/demos/avatar.svg"
     }];
