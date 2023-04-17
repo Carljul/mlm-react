@@ -1,6 +1,10 @@
 import { IonList, IonItem } from '@ionic/react';
 import CategoryCircle from './CategoryCircleComponent';
 import menCategory from '../assets/img/men_category.jpg';
+import womenCategory from '../assets/img/women_category.jpg';
+import deviceCategory from '../assets/img/device_category.jpg';
+import gamingCategory from '../assets/img/gaming_category.jpg';
+import gadgetsCategory from '../assets/img/gadgets_category.jpg';
 
 const Notification: React.FC = () => {
     const categories = [{
@@ -10,19 +14,19 @@ const Notification: React.FC = () => {
     },{
         id: 2,
         label: 'Women',
-        img: menCategory,
+        img: womenCategory,
     },{
         id: 3,
         label: 'Devices',
-        img: menCategory,
+        img: deviceCategory,
     },{
         id: 4,
         label: 'Gaming',
-        img: menCategory,
+        img: gamingCategory,
     },{
         id: 5,
         label: 'Gadget',
-        img: menCategory,
+        img: gadgetsCategory,
     }];
 
     return (

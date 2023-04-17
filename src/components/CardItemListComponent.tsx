@@ -1,16 +1,18 @@
 import { IonInfiniteScroll, IonInfiniteScrollContent } from "@ionic/react";
 import { useEffect, useState } from "react";
 import CardItemComponent from "./CardItemComponent";
-import menClothes from '../assets/img/men_clothes.jpg';
+import products from '../models/Products';
 
 
 const CardItemListComponent: React.FC = () => {
-    const [items, setItems] = useState<number[]>([]);
+    const [items, setItems] = useState(products);
     
     const generateItems = () => {
       const newItems = [];
       for (let i = 0; i < 50; i++) {
-        newItems.push(i);
+        const randomIndex = Math.floor(Math.random() * products.length);
+        const randomItem = products[randomIndex];
+        newItems.push(randomItem);
       }
 
       setItems([...items, ...newItems]);
@@ -24,7 +26,7 @@ const CardItemListComponent: React.FC = () => {
       <>
         <div className='d-grid template-3-columns'>
           {items.map((item, index) => (
-            <CardItemComponent id={index} key={index} name="Fjallraven - Fo" price="$109.95" img={menClothes} />
+            <CardItemComponent id={index} key={index} name={item.name} price={`$${item.price}`} img={item.imageUrl} />
           ))}
         </div>
         <IonInfiniteScroll
