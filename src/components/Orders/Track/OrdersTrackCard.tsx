@@ -43,7 +43,7 @@ const OrdersTrackCard: React.FC<OrdersTrackCardProps> = (props: OrdersTrackCardP
                 </IonRow>
                 <IonRow>
                     <IonCol>
-                        <Link to="" style={{textDecoration: 'none'}}>
+                        <Link to="#" style={{textDecoration: 'none'}}>
                             <IonCard className="delivery_date">
                                 <IonCardContent>
                                     <div className="d-flex center-align">
@@ -62,7 +62,7 @@ const OrdersTrackCard: React.FC<OrdersTrackCardProps> = (props: OrdersTrackCardP
                                 <img src={props.img} alt={props.name} />
                             </IonThumbnail>
                             <IonLabel>
-                                <Link to={`/app/product/details/`+props.product_id} style={{textDecoration: 'none'}}>
+                                <Link to="#" style={{textDecoration: 'none'}}>
                                     <span className="product_name">{props.name}</span>
                                 </Link>
                                 {

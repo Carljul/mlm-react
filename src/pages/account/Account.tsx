@@ -1,4 +1,4 @@
-import { isPlatform, IonAvatar, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonToast, IonButton, IonRouterLink, useIonRouter } from '@ionic/react';
+import { isPlatform, IonAvatar, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonButton, IonRouterLink, useIonRouter } from '@ionic/react';
 
 // CSS
 import '../../css/Accounts.modules.css';
@@ -6,7 +6,6 @@ import '../../css/Accounts.modules.css';
 // Icons
 import {
     chevronForward,
-    closeCircle,
     chevronForwardOutline
 } from 'ionicons/icons'; 
 import { FiEdit3 } from 'react-icons/fi';
@@ -20,7 +19,7 @@ import { FcGenealogy } from 'react-icons/fc';
 import { IoIosNotificationsOutline } from 'react-icons/io';
 import { RiLogoutBoxRLine } from 'react-icons/ri';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Header from '../../components/HeaderComponent';
 import { useStateContext } from '../../provider/ContextProvider';
 import { getService, postService, serviceStatus } from '../../services/httpServices';
@@ -33,13 +32,13 @@ const Account: React.FC = () => {
     const {user, setUser, setToken} = useStateContext();
 
     // States
-    const [isOpenToast, setIsOpenToast] = useState(true);
+    // const [isOpenToast, setIsOpenToast] = useState(true);
     
     // Routes
     const pageNavigation = useIonRouter();
 
     useEffect(() => {
-        authChecker();
+        // authChecker();
     }, [])
 
     const authChecker = function () {

@@ -21,7 +21,7 @@ const Login: React.FC = () => {
     const {setToken, setUser} = useStateContext();
 
     useEffect(() => {
-        authChecker();
+        // authChecker();
     }, [])
   
 

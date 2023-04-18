@@ -1,6 +1,5 @@
 import {
     IonBadge,
-    IonIcon,
     IonLabel,
     IonRouterOutlet,
     IonTabBar,

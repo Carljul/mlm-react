@@ -12,7 +12,8 @@ interface NotificationCardProps {
 }
 const NotificationCards: React.FC<NotificationCardProps> = (props: NotificationCardProps) => {
     return (
-        <Link to={`/app/notification/`+props.id} className="notification-card-link">
+        // <Link to={`/app/notification/`+props.id} className="notification-card-link">
+        <Link to="#" className="notification-card-link">
             <IonCard>
                 <IonCardContent>
                     <div className="d-flex space-between">

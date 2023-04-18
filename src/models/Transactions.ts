@@ -1,4 +1,4 @@
-import manCategory from '../assets/img/men_category.jpg';
+import womenCategory from '../assets/img/women_category.jpg';
 
 enum TransactionStatus {
     success,
@@ -16,7 +16,7 @@ export interface TransactionItemProps {
 
 const transactions: TransactionItemProps[] = [{
         id: 1,
-        img: manCategory,
+        img: womenCategory,
         name: 'Nathaniel', 
         datetime: new Date('19 Jan 2023 05:30 pm'),
         amount: 15.00,
@@ -37,7 +37,7 @@ const transactions: TransactionItemProps[] = [{
         status: TransactionStatus.danger
     },{
         id: 4,
-        img: manCategory,
+        img: womenCategory,
         name: 'Nathaniel', 
         datetime: new Date('19 Jan 2023 05:30 pm'),
         amount: 15.00,
