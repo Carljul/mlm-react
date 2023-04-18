@@ -1,30 +1,9 @@
 import { IonContent, IonPage } from '@ionic/react';
-import CategoryBoxComponent from '../../components/CategoryBoxComponent';
+import CategoryBoxComponent from '../../components/Category/CategoryBoxComponent';
 import Header from '../../components/HeaderComponent';
-import menCategory from '../../assets/img/men_category.jpg';
+import categories from '../../models/Categories';
 
 const Categories: React.FC = () => {
-  const categories = [{
-      id: 1,
-      label: 'Men',
-      img: menCategory,
-  },{
-      id: 2,
-      label: 'Women',
-      img: menCategory,
-  },{
-      id: 3,
-      label: 'Devices',
-      img: menCategory,
-  },{
-      id: 4,
-      label: 'Gaming',
-      img: menCategory,
-  },{
-      id: 5,
-      label: 'Gadget',
-      img: menCategory,
-  }];
   return (
     <IonPage>
         <Header />

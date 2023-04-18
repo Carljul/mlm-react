@@ -1,7 +1,7 @@
 import { IonInfiniteScroll, IonInfiniteScrollContent } from "@ionic/react";
 import { useEffect, useState } from "react";
 import CardItemComponent from "./CardItemComponent";
-import products from '../models/Products';
+import products from '../../models/Products';
 
 
 const CardItemListComponent: React.FC = () => {

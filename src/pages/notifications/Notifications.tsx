@@ -1,27 +1,12 @@
 import { IonContent, IonPage } from "@ionic/react"
 import Header from "../../components/HeaderComponent"
 import NotificationCards from "../../components/Notifications/NotificationCards";
+import NotificationClass from "../../models/Notifications";
 
 const Notifications: React.FC = () => {
-    const notifications = [{
-        id: 1,
-        status: 'Delivered',
-        product_name: 'Some Item',
-        date: '06/23/2023',
-        title: 'Your Parcel has been delivered',
-        description: `<span>Order # 6123987215489213</span>
-        <span>Tracking # MP243234</span>`,
-        img: "https://ionicframework.com/docs/img/demos/avatar.svg"
-    },{
-        id: 2,
-        status: 'Pending',
-        date: '02/23/2023',
-        product_name: 'Some Item',
-        title: 'Your Parcel is pending',
-        description: `<span>Order # 6123987215489213</span>
-        <span>Tracking # MP243234</span>`,
-        img: "https://ionicframework.com/docs/img/demos/avatar.svg"
-    }];
+    const notification = new NotificationClass();
+    const notifications = notification.notificationList();
+    
     return (
         <IonPage>
             <Header />
@@ -30,9 +15,9 @@ const Notifications: React.FC = () => {
                     notifications.map((item, value) => (
                         <NotificationCards key={value}
                             id = {item.id}
-                            status = {item.status}
-                            date = {item.date}
-                            title = {item.title}
+                            status = {notification.getStatusString(item.status)}
+                            date = {item.date.toDateString()}
+                            title = {item.notificaiton_title}
                             description = {item.description}
                             img = {item.img}
                             product_name = {item.product_name}

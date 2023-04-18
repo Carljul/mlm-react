@@ -1,6 +1,6 @@
 import {IonRow, IonCol, IonLabel} from '@ionic/react';
 import { FiDollarSign } from 'react-icons/fi';
-import { GrDeliver } from 'react-icons/gr';
+import { TbTruckDelivery } from 'react-icons/tb';
 import { RxPerson } from "react-icons/rx";
 import { Link } from 'react-router-dom';
 
@@ -18,7 +18,7 @@ const FilterComponent: React.FC = () => {
             <IonCol className="withWhiteLine">
                 <Link to="/app/product/filtered/fdfr">
                   <div className="d-flex h-100 center-align space-evenly">
-                    <GrDeliver className='filterIconSize'/>
+                    <TbTruckDelivery className='filterIconSize'/>
                     <IonLabel className='filterLabel'>Free&nbsp;Delivery <br /> Free&nbsp;Return</IonLabel>
                   </div>
                 </Link>

@@ -348,7 +348,7 @@ div.color-selected {
 }
 
 .mb-3 {
-    margin-bottom: 30px;
+    margin-bottom: 30px !important;
 }
 
 .fixedAddToCart {
@@ -737,6 +737,7 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
     border: 2px dashed black;
     position: relative;
     border-radius: 20px;
+    text-align: center;
 }
 .card-list-flex .card-new h1 {
     position: absolute;
@@ -813,4 +814,29 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
 .storeLink {
     text-decoration: none;
     font-size: 12px;
+}
+
+.carditems .rccs {
+    width: 100% !important;
+}
+
+.carditems .rccs > div{
+    max-width: 380px;
+    width: 100% !important;
+    height: 210px !important;
+}
+
+.defaultCard {
+    position: relative;
+}
+.defaultCard h1 {
+    background-color: #fff;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 4.8%;
+    left: 50%;
+    transform: translate(-100%, -100%);
+    border-top-right-radius: 14px;
+    border-bottom-left-radius: 5px;
 }

@@ -1,17 +1,12 @@
 import { IonAvatar, IonItem, IonLabel, useIonRouter } from "@ionic/react";
 import '../css/TransactionItemComponent.modules.css';
+import { TransactionItemProps } from "../models/Transactions";
+import TransactionClass from "../models/Transactions";
 
-interface TransactionItemProps {
-    id: number,
-    img?: string | null,
-    name: string, 
-    datetime: string,
-    amount: string,
-    transaction?: string | "success"
-}
 
 const TransactionItemComponent: React.FC<TransactionItemProps> = (props: TransactionItemProps) => {
     const navigation = useIonRouter();
+    const transactionClass = new TransactionClass();
 
     const viewHistory = (idToVisit: number) => {
         navigation.push('/app/order/'+idToVisit, 'root', 'replace');
@@ -29,9 +24,9 @@ const TransactionItemComponent: React.FC<TransactionItemProps> = (props: Transac
             }
             <div className="d-block">
                 <IonLabel className='transactionName'>{props.name}</IonLabel>
-                <span className='transactionDateTime'>{props.datetime}</span>
+                <span className='transactionDateTime'>{props.datetime.toDateString()}</span>
             </div>
-            <IonLabel slot='end' color={props.transaction} className='transactionAmount'>
+            <IonLabel slot='end' color={transactionClass.getStatusString(props.status)} className='transactionAmount'>
                 {props.amount}
             </IonLabel>
         </IonItem>

@@ -2,15 +2,7 @@ import { IonIcon, IonImg, IonInput, IonLabel } from "@ionic/react";
 import { add, remove } from "ionicons/icons";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
-interface CartItemProps {
-    id: number,
-    name: string, 
-    img: string,
-    quantity: number,
-    price: string,
-    variations?: object
-}
+import { CartItemProps } from "../models/Cart";
 
 const CartItemComponent: React.FC<CartItemProps> = (props: CartItemProps) => {
     const [countItem, setCountItem] = useState<number>(1);
@@ -49,8 +41,8 @@ const CartItemComponent: React.FC<CartItemProps> = (props: CartItemProps) => {
                 <IonImg src={props.img} alt=""></IonImg>
             </div>
             <div className="description">
-                <Link to={`/app/product/details/`+props.id}><IonLabel className='title'>Mens Casual Premium</IonLabel></Link>
-                <IonLabel color='success'>$22.30</IonLabel>
+                <Link to={`/app/product/details/`+props.id}><IonLabel className='title'>{props.name}</IonLabel></Link>
+                <IonLabel color='success'>{`$`+props.price}</IonLabel>
                 {
                     variations ?
                     <IonLabel className="variation">{variations}</IonLabel>

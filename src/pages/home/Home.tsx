@@ -1,6 +1,6 @@
 import { IonCol, IonContent, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, RefresherEventDetail } from '@ionic/react';
-import CardItemListComponent from '../../components/CardItemListComponent';
-import CategoryCircleListComponent from '../../components/CategoryCircleListComponent';
+import CardItemListComponent from '../../components/Cards/CardItemListComponent';
+import CategoryCircleListComponent from '../../components/Category/CategoryCircleListComponent';
 import FilterComponent from '../../components/FilterComponent';
 import Header from '../../components/HeaderComponent';
 import Notification from '../../components/NotificationComponent';

@@ -1,12 +1,13 @@
 import { IonAvatar, IonCol, IonRow } from "@ionic/react";
 import StarRatingComponent from "./StarRatingComponent";
+import womenCategory from '../assets/img/women_category.jpg';
 
 const UserRatingComponent: React.FC = () => {
     return (
         <IonRow className="mb-3">
             <IonCol size='3'>
                 <IonAvatar>
-                    <img src='https://www.nicepng.com/png/detail/4-46270_mini-naruto-naruto-chibi-render.png' alt=""/>
+                    <img src={womenCategory} alt=""/>
                 </IonAvatar>
             </IonCol>
             <IonCol size='9'>
