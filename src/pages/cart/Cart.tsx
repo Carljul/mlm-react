@@ -1,9 +1,11 @@
 import { IonButton, IonCol, IonContent, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
 import CartItemComponent from '../../components/CartItemComponent';
 import Header from '../../components/HeaderComponent';
-import carts from '../../models/Cart';
+import CartClass from '../../models/Cart';
 
 const Cart: React.FC = () => {
+  let cartsClass = new CartClass();
+  let carts = cartsClass.cartList();
   return (
     <IonPage>
         <Header />
@@ -32,7 +34,7 @@ const Cart: React.FC = () => {
                   <div className="center center-align">
                     <IonLabel>Price</IonLabel>
                     <br />
-                    <IonLabel color='success'>$100.59</IonLabel>
+                    <IonLabel color='success'>{cartsClass.showTotal()}</IonLabel>
                   </div>
                 </IonCol>
                 <IonCol>
