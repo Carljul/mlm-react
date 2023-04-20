@@ -63,7 +63,7 @@ const notifications: Notification[] = [{
 ];
 
 
-export default class NotificationClass {
+class NotificationClass {
     public notificationList()
     {
         return notifications;
@@ -81,5 +81,6 @@ export default class NotificationClass {
                 return "";
         }
     }
-    
 }
+
+export default NotificationClass;

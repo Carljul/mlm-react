@@ -26,7 +26,13 @@ const CardItemListComponent: React.FC = () => {
       <>
         <div className='d-grid template-3-columns'>
           {items.map((item, index) => (
-            <CardItemComponent id={index} key={index} name={item.name} price={`$${item.price}`} img={item.imageUrl} />
+            <CardItemComponent
+              id={item.id}
+              key={index}
+              name={item.details.name}
+              price={`$${item.details.price}`}
+              img={item.details.imageUrl}
+            />
           ))}
         </div>
         <IonInfiniteScroll

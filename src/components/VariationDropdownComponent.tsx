@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 interface VarationListProps {
     index: string,
-    value: string | number
+    value: string | number,
+    display: string | null,
 }
 
 interface VariationProps {
@@ -39,6 +40,24 @@ const VariationDropdownComponent: React.FC<VariationProps> = (props: VariationPr
     useEffect(() => {
         runDownSelecteds();
     }, []);
+
+    const sizeOutput = (size: number) => {
+        switch (size) {
+            case 1:
+                return "XS";
+            case 2:
+                return "S";
+            case 3:
+                return "M";
+            case 4:
+                return "L";
+            case 5:
+                return "XL";
+            case 6:
+                return "XXL";
+        }
+    }
+
     return (
         <>
             {
@@ -51,7 +70,7 @@ const VariationDropdownComponent: React.FC<VariationProps> = (props: VariationPr
                                     props.type === 'sizes' ?
                                     <>
                                         <div>Size</div>
-                                        <div className="selected">{selected}</div>
+                                        <div className="selected">{sizeOutput(parseInt(selected))}</div>
                                     </>
                                     :
                                     <>
@@ -71,11 +90,11 @@ const VariationDropdownComponent: React.FC<VariationProps> = (props: VariationPr
                             {
                                 props.list.map((item, index) => (
                                     props.type === 'sizes' ?
-                                    (<div className="dropdown-item" key={index} data-value={item.index} onClick={onSelectItem}>{item.value}</div>)
+                                    (<div className="dropdown-item" key={index} data-value={item.index} onClick={onSelectItem}>{sizeOutput(item.value as number)}</div>)
                                     :
                                     (<div className="dropdown-item" key={index} data-value={item.index} onClick={onSelectItem}>
-                                        <div className="color-selected" style={{backgroundColor: item.index}}></div>
-                                        <label>{item.value}</label>
+                                        <div className="color-selected" style={{backgroundColor: item.value as string}}></div>
+                                        <label>{item.display}</label>
                                     </div>)
                                 ))
                             }

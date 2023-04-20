@@ -4,13 +4,14 @@ import deviceCategory from '../assets/img/device_category.jpg';
 import gamingCategory from '../assets/img/gaming_category.jpg';
 import gadgetsCategory from '../assets/img/gadgets_category.jpg';
 
-interface Category {
+export interface CategoryProps {
     id: number,
     label: string,
     img: string,
+    details?: string,
 }
 
-const categories: Category[] = [{
+const categories: CategoryProps[] = [{
         id: 1,
         label: 'Men',
         img: menCategory,
