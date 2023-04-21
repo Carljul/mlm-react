@@ -840,3 +840,55 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
     border-top-right-radius: 14px;
     border-bottom-left-radius: 5px;
 }
+
+.cashInButton {
+    --border-radius: 20px;
+    float: right;
+}
+
+.iconPackage > * {
+    display: block;
+    width: 100% !important;
+    text-align: center;
+    margin: 6px 0;
+}
+
+.iconPackage .icons {
+    font-size: 30px;
+}
+.walletContainer {    
+    display: flex;
+    flex-direction: column;
+}
+
+.walletTransactions {
+    background-color: #f5f5f5;
+    overflow: scroll;
+    height: calc(100vh - 300px);
+}
+
+.walletTransactions .transactionItem {
+    margin-bottom: 5px;
+}
+
+.transactionType {
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    background-color: var(--ion-color-primary);
+    display: inline-block;
+}
+
+.transactionType p {
+    height: inherit;
+    color: #fff;
+    display: flex;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    font-size: 2vw;
+}
