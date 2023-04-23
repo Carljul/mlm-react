@@ -892,3 +892,13 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
     padding: 2px;
     font-size: 2vw;
 }
+
+.genealogy-container {
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.genealogy-avatar {
+    border-radius: 100px;
+    display: block;
+}
