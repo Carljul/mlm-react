@@ -7,9 +7,8 @@
 
 <div align="center">
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/Carljul/mlm-react/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/Carljul/mlm-react/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/Carljul/mlm-react)](https://github.com/Carljul/mlm-react/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Carljul/mlm-react)](https://github.com/Carljul/mlm-react/pulls)
 
 </div>
 
