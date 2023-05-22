@@ -5,6 +5,7 @@ import Header from '../../../components/HeaderComponent';
 import VariationDropdownComponent from '../../../components/VariationDropdownComponent';
 import products from '../../../models/Products';
 import UserRatingComponent from '../../../components/UserRatingComponent';
+import DetailImage from './DetailImage';
 
 const Details: React.FC = () => {
   // Parameter from URL
@@ -44,6 +45,9 @@ const Details: React.FC = () => {
         <Header/>
         <IonContent className='ion-padding'>
             <IonGrid className='mb-3'>
+              <IonRow>
+                <DetailImage image={product?.details.imageUrl} />
+              </IonRow>
               <IonRow>
                 <IonCol>
                   <h1 className='center bold'>{product?.details.name}</h1>
