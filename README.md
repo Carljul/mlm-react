@@ -33,6 +33,8 @@ Follow Process to setup in your local environment
 1. Node
 2. Android Studio
 3. Text Editor
+4. Ionic CLI
+5. Capacitor CLI
 
 ### Installing
 
@@ -44,9 +46,15 @@ npm run start
 The command npm run start will deploy the project in web view
 
 To deploy it in mobile
+Add first the android project or the ios project
 ```
-ionic cordova emulate android || ionic cordova emulate ios
+npx cap add android || npx cap add ios
 ```
+Make sure the emulator is running and do this command. it will open the android studio
+```
+npx cap open android
+```
+If in android you need to press the play button icon to emulate it in a emulator
 
 ## 🧐 Test Users <a name = "testusers"></a>
 | Username | Password |
