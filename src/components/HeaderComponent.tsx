@@ -6,7 +6,7 @@ import { RxPerson } from "react-icons/rx";
 const Header: React.FC = () => {
   return (
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar className='epa-toolbar'>
           <IonTitle>
             <div className="d-flex">
               <RxPerson className='navigation-icon'/>

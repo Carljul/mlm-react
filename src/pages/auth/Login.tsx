@@ -3,6 +3,9 @@ import { useEffect, useRef, useState } from 'react';
 import { useStateContext } from '../../provider/ContextProvider';
 import { validateEmail } from '../../services/validationServices';
 import { getService, postService, serviceStatus } from '../../services/httpServices';
+import myLogo from '../../assets/logo/icon.jpg';
+
+import test from '../../css/Login.module.css';
 
 const Login: React.FC = () => {
     // Navigations
@@ -85,51 +88,58 @@ const Login: React.FC = () => {
 
     return (
         <IonPage>
-            <IonContent className="ion-padding">
-                <form onSubmit={formLogin}>
+            <IonContent className={`${test['epa-login']} ion-padding`}>
+                <IonRow>
+                    <IonCol class='center'>
+                        <img src={myLogo} alt="Logo"  className="backgroundLogo"/>
+                    </IonCol>
+                </IonRow>
+                <form onSubmit={formLogin} className='epa-login-form'>
                     <IonGrid>
                         <IonRow>
                             <IonCol>
-                                <h1>MLM</h1>
-                            </IonCol>
-                            <IonCol>
-                                <h1>
-                                    <IonRouterLink routerLink='/app/home' className='float-right'>Store</IonRouterLink>
-                                </h1>
-                            </IonCol>
-                        </IonRow>
-                        <IonRow>
-                            <IonCol>
-                                <IonItem className={`${isValid && 'ion-valid'} ${isValid === false && 'ion-invalid'} ${isTouched && 'ion-touched'}`} fill="outline">
+                                <IonItem className={`${isValid && 'ion-valid loginInput'} ${isValid === false && 'ion-invalid loginInput'} ${isTouched && 'ion-touched loginInput'}`} fill="solid">
                                     <IonLabel position="floating">Email</IonLabel>
                                     <IonInput type="email" onIonInput={(event) => validate(event)} onIonBlur={() => markTouched()} ref={emailRef}></IonInput>
-                                    <IonNote slot="helper">Enter a valid email</IonNote>
-                                    <IonNote slot="error">Invalid email</IonNote>
+                                    <IonNote slot="helper" className='loginNote'>Enter a valid email</IonNote>
+                                    <IonNote slot="error" className='loginNote'>Invalid email</IonNote>
                                 </IonItem>
                             </IonCol>
                         </IonRow>
                         <IonRow>
                             <IonCol>
-                                <IonItem fill='outline'>
+                                <IonItem fill='solid' className="loginInput">
                                     <IonLabel position="floating">Password</IonLabel>
-                                    <IonInput type="password" ref={passwordRef} onKeyPress={handleEnterKey}/>
+                                    <IonInput type="password" ref={passwordRef} onKeyPress={handleEnterKey} className='testInput'/>
                                 </IonItem>
                             </IonCol>
                         </IonRow>
                         <IonRow>
                             <IonCol>
-                                <IonButton expand="full" type='submit'>
+                                <IonButton expand="block" type='submit' shape='round' className='epa-button'>
                                     Login
                                 </IonButton>
                             </IonCol>
                         </IonRow>
                         <IonRow>
+                            <IonCol>
+                                <IonButton routerLink='/signup' expand="block" shape='round' className='epa-button'>
+                                    Sign up
+                                </IonButton>
+                            </IonCol>
+                        </IonRow>
+                        <IonRow>
                             <IonCol class='center'>
-                                <IonRouterLink routerLink='/signup'>Sign Up</IonRouterLink>
+                                <IonRouterLink>Forgot your password?</IonRouterLink>
                             </IonCol>
                         </IonRow>
                     </IonGrid>
                 </form>
+                <IonRow>
+                    <IonCol class='center'>
+                        <IonRouterLink routerLink='/app/home' style={{'--color': '#fff'}}>Visit Store</IonRouterLink>
+                    </IonCol>
+                </IonRow>
             </IonContent>
         </IonPage>
     );

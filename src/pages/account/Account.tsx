@@ -82,14 +82,16 @@ const Account: React.FC = () => {
                         <>
                             <IonRow>
                                 <IonCol>
-                                    <IonButton expand='full' onClick={() => {navigateToPage('/login')}}>
+                                    <IonButton expand="block" shape='round' className='epa-button' onClick={() => {navigateToPage('/login')}}>
                                         Login
                                     </IonButton>
                                 </IonCol>
                             </IonRow>
                             <IonRow>
-                                <IonCol className='center'>
-                                    <IonRouterLink routerLink='/signup'>Sign Up</IonRouterLink>
+                                <IonCol>
+                                    <IonButton routerLink='/signup' expand="block" shape='round' className='epa-button'>
+                                        Sign Up
+                                    </IonButton>
                                 </IonCol>
                             </IonRow>
                         </>

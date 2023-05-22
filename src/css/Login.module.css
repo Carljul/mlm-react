@@ -1,0 +1,4 @@
+.epa-login {
+    --ion-background-color: rgb(11,141,67);
+    --ion-background-color: linear-gradient(90deg, rgba(11,141,67,1) 0%, rgba(85,174,80,1) 46%, rgba(179,210,83,1) 100%);
+}

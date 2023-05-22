@@ -902,3 +902,42 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
     border-radius: 100px;
     display: block;
 }
+
+.backgroundLogo {
+    border-radius: 100%;
+    width: 100px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.epa-button {
+    --background: rgb(179,210,83);
+    --background: linear-gradient(90deg, rgba(179,210,83,1) 0%, rgba(85,174,80,1) 46%, rgba(11,141,67,1) 100%);
+}
+
+.epa-login-form {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+.loginInput {
+    --background: #fff;
+    --border-style: none;
+    --border-radius: 50px;
+    --border-style: solid;
+    --border-width: 1px;
+    --border-color: linear-gradient(90deg, rgba(179,210,83,1) 0%, rgba(85,174,80,1) 46%, rgba(11,141,67,1) 100%);
+}
+
+.loginNote {
+    position: absolute;
+    right: 25px;
+    top: 4px;
+}
+
+.epa-toolbar {
+    --background: linear-gradient(330deg, rgba(179,210,83,1) 0%, rgba(85,174,80,1) 46%, rgba(11,141,67,1) 100%);
+    color: #fff;
+}
