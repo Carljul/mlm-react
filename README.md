@@ -65,6 +65,9 @@ If in android you need to press the play button icon to emulate it in a emulator
 ## 🧐 How to build app for Android<a name = "buildappandroid"></a>
 Open android studio by running command
 ```
+ionic build
+```
+```
 npx cap open android
 ```
 In android studio menu select the Build and then select Build bundle(s) / APK(s) then select Build APK
