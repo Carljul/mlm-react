@@ -2,16 +2,21 @@ import { IonBadge, IonButton, IonButtons, IonHeader, IonLabel, IonTitle, IonTool
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { RxPerson } from "react-icons/rx";
+import { ContextProvider, useStateContext } from '../provider/ContextProvider';
 
 const Header: React.FC = () => {
+  const { user } = useStateContext();
+
   return (
       <IonHeader>
         <IonToolbar className='epa-toolbar'>
           <IonTitle>
-            <div className="d-flex">
-              <RxPerson className='navigation-icon'/>
-              <IonLabel>Guest</IonLabel>
-            </div>
+            <ContextProvider>
+              <div className="d-flex center-align">
+                { user ? <img src={user.avatar ?? ''} className='avatar'/> : <RxPerson className='navigation-icon'/> }
+                <IonLabel>{ user ? user.name : 'Guests'}</IonLabel>
+              </div>
+            </ContextProvider>
           </IonTitle>
           <IonButtons slot="end">
             <IonButton routerLink="/app/wishlist">

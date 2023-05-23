@@ -8,10 +8,18 @@ import {BiUserPin} from 'react-icons/bi';
 import {RiLockPasswordLine} from 'react-icons/ri';
 
 import loginModule from '../../css/Login.module.css';
+import {authChecker, ServiceCallBack} from '../../services/authServices';
+import { useHistory } from 'react-router';
+
+interface LoginPayload {
+    email: string;
+    password: string;
+}
 
 const Login: React.FC = () => {
     // Navigations
-    const navigation = useIonRouter()
+    // const navigation = useIonRouter()
+    const navigation = useHistory();
 
     // States
     const [isTouched, setIsTouched] = useState(false);
@@ -26,17 +34,18 @@ const Login: React.FC = () => {
     const {setToken, setUser} = useStateContext();
 
     useEffect(() => {
-        // authChecker();
-    }, [])
-  
+        authChecker(ServiceCallBack.LOGIN).then(result => {
+            if (!result) {
+                setToken(null);
+                setUser(null);
+                return;
+            }
 
-    const authChecker = function () {
-        if (localStorage.getItem('ACCESS_TOKEN') === null) return false;
-        getService('/user').then((data) => {
-            serviceStatus(data.status)
-            navigation.push('/app/home', 'root', 'replace');
+            if (result) {
+                navigation.replace('/app/home', 'root');
+            }
         });
-    }
+    }, [])
 
     const formLogin = (event: React.KeyboardEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -65,27 +74,60 @@ const Login: React.FC = () => {
     }
 
     const doLogin = () => {
-        const payload = {
-            email: emailRef.current ? emailRef.current.value : '',
-            password: passwordRef.current ? passwordRef.current.value : ''
+        const payload: LoginPayload = {
+            email: (emailRef.current ? emailRef.current.value : '') as string,
+            password: (passwordRef.current ? passwordRef.current.value : '') as string
         }
 
-        postService('/login', payload).then(function (response) {
-            const data = response.data;
-            if (serviceStatus(response.status)) {
-                setUser(data.user)
-                setToken(data.token)
+        loginCreds(payload);
+    }
+
+    const loginCreds = function(payload: LoginPayload)
+    {
+        if (process.env.REACT_APP_ENV == 'static') {
+            if (payload.email == 'admin@gmail.com' && payload.password == 'password') {
+                setUser({
+                    name: 'Admin Test',
+                    email: 'admin@gmail.com',
+                    cellphone_number: '09068765047',
+                    genealogy_invitation_code: null,
+                    role_id: 1,
+                    id: 1,
+                    avatar: 'https://www.chronostep.com/cswp/wp-content/uploads/2022/03/jul.png',
+                    person: {
+                        firstname: 'Admin',
+                        middlename: 'Admin',
+                        lastname: 'Admin',
+                        suffix: null,
+                        fullname: 'Admin A. Admin',
+                        civil_status: 'Single',
+                        gender: 'Male',
+                        birthdate: '06/22/1997'
+                    }
+                });
+                setToken('testToken');
                 localStorage.removeItem('ACCESS_TOKEN');
-                localStorage.setItem('ACCESS_TOKEN', data.token);
-                navigation.push('/app/home', 'root', 'replace');
-            } else {
-                loginAlert({
-                    header: 'Oh oh!',
-                    message: 'No user match for given credentials',
-                    buttons: ['OK']
-                })
+                localStorage.setItem('ACCESS_TOKEN', 'testToken');
+                navigation.replace('/app/home', 'root');
             }
-        })
+        } else {
+            postService('/login', payload).then(function (response) {
+                const data = response.data;
+                if (serviceStatus(response.status)) {
+                    setUser(data.user)
+                    setToken(data.token)
+                    localStorage.removeItem('ACCESS_TOKEN');
+                    localStorage.setItem('ACCESS_TOKEN', data.token);
+                    navigation.replace('/app/home', 'root');
+                } else {
+                    loginAlert({
+                        header: 'Oh oh!',
+                        message: 'No user match for given credentials',
+                        buttons: ['OK']
+                    })
+                }
+            })
+        }
     }
 
     return (

@@ -934,3 +934,8 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
     --background: var(--epa-theme-color);
     color: #fff;
 }
+.avatar {
+    width: 30px;
+    border-radius: 50px;
+    margin-right: 10px;
+}

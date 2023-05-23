@@ -22,7 +22,8 @@ import { RiLogoutBoxRLine } from 'react-icons/ri';
 import { useEffect } from 'react';
 import Header from '../../components/HeaderComponent';
 import { useStateContext } from '../../provider/ContextProvider';
-import { getService, postService, serviceStatus } from '../../services/httpServices';
+import { postService } from '../../services/httpServices';
+import {authChecker, ServiceCallBack} from '../../services/authServices';
 
 const Account: React.FC = () => {
     // Platform
@@ -38,27 +39,34 @@ const Account: React.FC = () => {
     const pageNavigation = useIonRouter();
 
     useEffect(() => {
-        // authChecker();
-    }, [])
-
-    const authChecker = function () {
-        if (localStorage.getItem('ACCESS_TOKEN') === null) return false;
-        getService('/user').then((data) => {
-            serviceStatus(data.status)
-            setUser(data.data);
+        authChecker(ServiceCallBack.ACCOUNT).then(data => {
+            if (!data) {
+                setToken(null);
+                setUser(null);
+                return;
+            }
+            if (data && typeof data !== 'boolean') {
+                setUser(data.data);
+            }
         });
-    }
+    }, [])
 
     const navigateToPage = (route: string) => {
         pageNavigation.push(route, 'root', 'replace');
     }
 
     const logout = () => {
-        postService('/logout', {}).then(() => {
+        if (process.env.REACT_APP_ENV == 'static') {
             setUser(null);
             setToken(null);
             localStorage.removeItem('ACCESS_TOKEN');
-        })
+        } else {
+            postService('/logout', {}).then(() => {
+                setUser(null);
+                setToken(null);
+                localStorage.removeItem('ACCESS_TOKEN');
+            })
+        }
     }
     
     return (
@@ -70,7 +78,7 @@ const Account: React.FC = () => {
                         <IonRow>
                             <IonCol size="4">
                                 <IonAvatar>
-                                    <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" className='profile'/>
+                                    <img alt="Silhouette of a person's head" src={user ? user.avatar??'' : 'https://ionicframework.com/docs/img/demos/avatar.svg'} className='profile'/>
                                 </IonAvatar>
                             </IonCol>
                             <IonCol>
