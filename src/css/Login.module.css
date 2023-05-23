@@ -1,4 +1,89 @@
-.epa-login {
-    --ion-background-color: rgb(11,141,67);
-    --ion-background-color: linear-gradient(90deg, rgba(11,141,67,1) 0%, rgba(85,174,80,1) 46%, rgba(179,210,83,1) 100%);
+.epa-login-signup {
+    --ion-background-color: var(--epa-theme-color);
+}
+
+.epa-login-form {
+    flex: 1;
+}
+.epa-login-logo-container {
+    flex: 0.5;
+}
+.epa-login-lower-portion {
+    height: 130px;
+    --ion-background-color: var(--epa-theme-color);
+}
+
+.epa-login-input {
+    --background: #ffffff9a;
+    --border-style: none;
+    --border-radius: 50px;
+    --border-style: solid;
+    --border-width: 3px;
+    --border-color: var(--epa-theme-color) !important;
+    text-align: center;
+}
+
+.epa-login-input ion-label {
+    text-align: center;
+}
+
+.epa-login-note {
+    position: absolute;
+    right: 25px;
+    top: 4px;
+}
+
+.epa-login-logo {
+    border-radius: 100%;
+    width: 150px;
+    height: auto;
+    margin: 15px auto;
+    color: #fff;
+}
+
+.epa-login-icons {
+    position: absolute;
+    font-size: 30px;
+    left: 0;
+    top: 50%;
+    color: rgb(11,141,67);
+    transform: translate(0, -50%);
+}
+
+.epa-login-remember-me ion-item {
+    --padding-start: 0 !important;
+    --min-height: 10px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.epa-login-remember-me ion-checkbox {
+    margin: 0 2px;
+    --border-color: #fff;
+}
+
+.epa-login-remember-me ion-label {
+    margin: 0 2px 0 2px;
+    position: absolute;
+}
+
+.epa-login-forgot-password ion-item {
+    --padding-start: 0 !important;
+    --min-height: 10px;
+    float: right;
+    color: #fff;
+}
+
+.epa-login-forgot-password ion-router-link {
+    color: #fff;
+    font-size: 14px;
+    text-decoration: underline;
+    float: right;
+    white-space: nowrap;
+
+}
+
+.epa-login-signup-link {
+    color: #fff;
+    --border-color: #fff;
 }

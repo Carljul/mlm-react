@@ -1,11 +1,13 @@
-import { IonButton, IonCol, IonContent, IonGrid, IonInput, IonItem, IonLabel, IonNote, IonPage, IonRouterLink, IonRow, useIonAlert, useIonRouter } from '@ionic/react';
+import { IonButton, IonCheckbox, IonCol, IonContent, IonFooter, IonGrid, IonInput, IonItem, IonLabel, IonNote, IonPage, IonRouterLink, IonRow, useIonAlert, useIonRouter } from '@ionic/react';
 import { useEffect, useRef, useState } from 'react';
 import { useStateContext } from '../../provider/ContextProvider';
 import { validateEmail } from '../../services/validationServices';
 import { getService, postService, serviceStatus } from '../../services/httpServices';
 import myLogo from '../../assets/logo/icon.jpg';
+import {BiUserPin} from 'react-icons/bi';
+import {RiLockPasswordLine} from 'react-icons/ri';
 
-import test from '../../css/Login.module.css';
+import loginModule from '../../css/Login.module.css';
 
 const Login: React.FC = () => {
     // Navigations
@@ -87,30 +89,30 @@ const Login: React.FC = () => {
     }
 
     return (
-        <IonPage>
-            <IonContent className={`${test['epa-login']} ion-padding`}>
-                <IonRow>
+        <IonPage className={loginModule['epa-login-signup']}>
+            <IonContent className="ion-padding">
+                <IonRow className={loginModule['epa-login-logo-container']}>
                     <IonCol class='center'>
-                        <img src={myLogo} alt="Logo"  className="backgroundLogo"/>
+                        <img src={myLogo} alt="Logo" className={loginModule['epa-login-logo']}/>
                     </IonCol>
                 </IonRow>
-                <form onSubmit={formLogin} className='epa-login-form'>
+                <form onSubmit={formLogin} className={loginModule['epa-login-form']}>
                     <IonGrid>
                         <IonRow>
                             <IonCol>
-                                <IonItem className={`${isValid && 'ion-valid loginInput'} ${isValid === false && 'ion-invalid loginInput'} ${isTouched && 'ion-touched loginInput'}`} fill="solid">
+                                <IonItem className={loginModule['epa-login-input']} fill="solid">
                                     <IonLabel position="floating">Email</IonLabel>
                                     <IonInput type="email" onIonInput={(event) => validate(event)} onIonBlur={() => markTouched()} ref={emailRef}></IonInput>
-                                    <IonNote slot="helper" className='loginNote'>Enter a valid email</IonNote>
-                                    <IonNote slot="error" className='loginNote'>Invalid email</IonNote>
+                                    <BiUserPin className={loginModule['epa-login-icons']}/>
                                 </IonItem>
                             </IonCol>
                         </IonRow>
                         <IonRow>
                             <IonCol>
-                                <IonItem fill='solid' className="loginInput">
+                                <IonItem fill='solid' className={loginModule['epa-login-input']}>
                                     <IonLabel position="floating">Password</IonLabel>
                                     <IonInput type="password" ref={passwordRef} onKeyPress={handleEnterKey} className='testInput'/>
+                                    <RiLockPasswordLine className={loginModule['epa-login-icons']}/>
                                 </IonItem>
                             </IonCol>
                         </IonRow>
@@ -123,24 +125,39 @@ const Login: React.FC = () => {
                         </IonRow>
                         <IonRow>
                             <IonCol>
-                                <IonButton routerLink='/signup' expand="block" shape='round' className='epa-button'>
-                                    Sign up
-                                </IonButton>
+                                <div className={loginModule['epa-login-remember-me']}>
+                                    <IonItem>
+                                        <IonCheckbox slot="start" />
+                                        <IonLabel>Remember me</IonLabel>
+                                    </IonItem>
+                                </div>
                             </IonCol>
-                        </IonRow>
-                        <IonRow>
-                            <IonCol class='center'>
-                                <IonRouterLink>Forgot your password?</IonRouterLink>
+                            <IonCol>
+                                <div className={loginModule['epa-login-forgot-password']}>
+                                    <IonItem>
+                                        <IonRouterLink routerLink='/forgot-password'>Forgot your password?</IonRouterLink>
+                                    </IonItem>
+                                </div>
                             </IonCol>
                         </IonRow>
                     </IonGrid>
                 </form>
+            </IonContent>
+            <IonFooter className={`${loginModule['epa-login-lower-portion']} ion-no-border`} no-border>
+                <IonRow>
+                    <IonCol class='center'>
+                        <p style={{'color': '#fff', 'margin': '0'}}>Not a member?</p>
+                        <IonButton routerLink='/signup' shape='round' fill='outline' className={loginModule['epa-login-signup-link']}>
+                            Create account
+                        </IonButton>
+                    </IonCol>
+                </IonRow>
                 <IonRow>
                     <IonCol class='center'>
                         <IonRouterLink routerLink='/app/home' style={{'--color': '#fff'}}>Visit Store</IonRouterLink>
                     </IonCol>
                 </IonRow>
-            </IonContent>
+            </IonFooter>
         </IonPage>
     );
 };

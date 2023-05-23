@@ -89,7 +89,7 @@ const Account: React.FC = () => {
                             </IonRow>
                             <IonRow>
                                 <IonCol>
-                                    <IonButton routerLink='/signup' expand="block" shape='round' className='epa-button'>
+                                    <IonButton routerLink='/signup' expand="block" shape='round' className='epa-button-reverse'>
                                         Sign Up
                                     </IonButton>
                                 </IonCol>
