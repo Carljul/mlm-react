@@ -3,6 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { validateEmail } from "../../services/validationServices";
 import { getService, postService } from "../../services/httpServices";
 import { useStateContext } from "../../provider/ContextProvider";
+import {HiUserAdd} from 'react-icons/hi';
+
+import loginModule from '../../css/Login.module.css';
 
 
 const SignUp: React.FC = () => {
@@ -72,20 +75,15 @@ const SignUp: React.FC = () => {
         setErrors(null);
     }
     return (
-        <IonPage>
+        <IonPage className={loginModule['epa-login-signup']}>
             <IonContent className="ion-padding">
+                <IonRow className={loginModule['epa-login-logo-container']}>
+                    <IonCol class='center'>
+                        <HiUserAdd className={`icon ${loginModule['epa-login-logo']}`}/>
+                    </IonCol>
+                </IonRow>
                 <form onSubmit={doSignUp}>
                     <IonGrid>
-                        <IonRow>
-                            <IonCol>
-                                <h1>MLM</h1>
-                            </IonCol>
-                            <IonCol>
-                                <h1>
-                                    <IonRouterLink routerLink='/app/home' className='float-right'>Store</IonRouterLink>
-                                </h1>
-                            </IonCol>
-                        </IonRow>
                         {
                             errors && <IonRow><IonCol><div className="d-block">
                                 {Object.keys(errors).map(key => (
@@ -95,7 +93,7 @@ const SignUp: React.FC = () => {
                         }
                         <IonRow>
                             <IonCol>
-                                <IonItem fill='outline'>
+                                <IonItem fill='solid' className={loginModule['epa-login-input']}>
                                     <IonLabel position="floating">Full name</IonLabel>
                                     <IonInput type="text" ref={fullnameRef} onKeyUp={clearErrorsOnInput}/>
                                 </IonItem>
@@ -103,17 +101,15 @@ const SignUp: React.FC = () => {
                         </IonRow>
                         <IonRow>
                             <IonCol>
-                                <IonItem className={`${isValid && 'ion-valid'} ${isValid === false && 'ion-invalid'} ${isTouched && 'ion-touched'}`} fill="outline">
+                                <IonItem className={loginModule['epa-login-input']} fill="solid">
                                     <IonLabel position="floating">Email</IonLabel>
                                     <IonInput type="email" onIonInput={(event) => validate(event)} onIonBlur={() => markTouched()} ref={emailRef}  onKeyUp={clearErrorsOnInput} />
-                                    <IonNote slot="helper">Enter a valid email</IonNote>
-                                    <IonNote slot="error">Invalid email</IonNote>
                                 </IonItem>
                             </IonCol>
                         </IonRow>
                         <IonRow>
                             <IonCol>
-                                <IonItem fill='outline'>
+                                <IonItem fill='solid' className={loginModule['epa-login-input']}>
                                     <IonLabel position="floating">Password</IonLabel>
                                     <IonInput type="password" ref={passwordRef} onKeyUp={clearErrorsOnInput}/>
                                 </IonItem>
@@ -121,7 +117,7 @@ const SignUp: React.FC = () => {
                         </IonRow>
                         <IonRow>
                             <IonCol>
-                                <IonItem fill='outline'>
+                                <IonItem fill='solid' className={loginModule['epa-login-input']}>
                                     <IonLabel position="floating">Confirm Password</IonLabel>
                                     <IonInput type="password" ref={confirmPasswordRef} onKeyUp={clearErrorsOnInput}/>
                                 </IonItem>
@@ -129,14 +125,16 @@ const SignUp: React.FC = () => {
                         </IonRow>
                         <IonRow>
                             <IonCol>
-                                <IonButton expand="full" type='submit'>
-                                Sign Up
+                                <IonButton expand="block" type='submit' shape='round' className='epa-button-reverse'>
+                                    Sign Up
                                 </IonButton>
                             </IonCol>
                         </IonRow>
                         <IonRow>
                             <IonCol class='center'>
-                                <IonRouterLink routerLink="/login">Login</IonRouterLink>
+                                <IonButton routerLink='/login' shape='round' fill='outline' className={loginModule['epa-login-signup-link']}>
+                                    Login Instead?
+                                </IonButton>
                             </IonCol>
                         </IonRow>
                     </IonGrid>

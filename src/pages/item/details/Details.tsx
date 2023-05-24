@@ -1,12 +1,15 @@
 import { IonButton, IonCol, IonContent, IonGrid, IonLabel, IonPage, IonRouterLink, IonRow } from '@ionic/react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import Header from '../../../components/HeaderComponent';
 // import UserRatingComponent from '../../../components/UserRatingComponent';
 import VariationDropdownComponent from '../../../components/VariationDropdownComponent';
 import products from '../../../models/Products';
 import UserRatingComponent from '../../../components/UserRatingComponent';
+import CartClass, { CartItemProps } from '../../../models/Cart';
 
 const Details: React.FC = () => {
+  const navigation = useHistory();
+  const cart = new CartClass();
   // Parameter from URL
   const {id} = useParams<{id: string}>();
   let product = products.find(item => item.id === parseInt(id));
@@ -39,10 +42,30 @@ const Details: React.FC = () => {
   }
   filters();
 
+  const addToCart = (event: React.KeyboardEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    doAddingCart();
+  }
+
+  const doAddingCart = () => {
+    if (typeof(product) != 'undefined') {
+      const newItem: CartItemProps = {
+        id: Math.random(),
+        quantity: 1,
+        variations: variations,
+        product: product
+      }
+      cart.addItem(newItem);
+      navigation.replace('/app/cart','root');
+    }
+  }
+
+
   return (
     <IonPage>
         <Header/>
         <IonContent className='ion-padding'>
+          <form onSubmit={addToCart}>
             <IonGrid className='mb-3'>
               <IonRow>
                 <IonCol>
@@ -105,10 +128,11 @@ const Details: React.FC = () => {
                   <IonLabel color='success'>${product?.details.price}</IonLabel>
                 </IonCol>
                 <IonCol>
-                  <IonButton color='success' className='fixedAddToCartButton'>ADD</IonButton>
+                  <IonButton color='success' type='submit' className='fixedAddToCartButton'>ADD</IonButton>
                 </IonCol>
               </IonRow>
             </IonGrid>
+          </form>
         </IonContent>
     </IonPage>
   );
