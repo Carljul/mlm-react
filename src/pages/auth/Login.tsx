@@ -93,7 +93,7 @@ const Login: React.FC = () => {
                     genealogy_invitation_code: null,
                     role_id: 1,
                     id: 1,
-                    avatar: 'https://www.chronostep.com/cswp/wp-content/uploads/2022/03/jul.png',
+                    profile_image: myLogo,
                     person: {
                         firstname: 'Admin',
                         middlename: 'Admin',

@@ -3,9 +3,12 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { RxPerson } from "react-icons/rx";
 import { ContextProvider, useStateContext } from '../provider/ContextProvider';
+import CartClass from '../models/Cart';
 
 const Header: React.FC = () => {
   const { user } = useStateContext();
+  const cart = new CartClass();
+  let cartCount = cart.cartCount();
 
   return (
       <IonHeader>
@@ -13,7 +16,7 @@ const Header: React.FC = () => {
           <IonTitle>
             <ContextProvider>
               <div className="d-flex center-align">
-                { user ? <img src={user.avatar ?? ''} className='avatar'/> : <RxPerson className='navigation-icon'/> }
+                { user ? <img src={user.profile_image ?? ''} className='avatar'/> : <RxPerson className='navigation-icon'/> }
                 <IonLabel>{ user ? user.name : 'Guests'}</IonLabel>
               </div>
             </ContextProvider>
@@ -24,7 +27,7 @@ const Header: React.FC = () => {
             </IonButton>
             <IonButton routerLink="/app/cart">
               <FiShoppingCart className='navigation-icon'/>
-              <IonBadge slot='end' color='danger' className='badgeNotification'>11</IonBadge>
+              {cartCount > 0 ? <IonBadge slot='end' color='danger' className='badgeNotification'>{cartCount}</IonBadge>:<></>}
             </IonButton>
           </IonButtons>
         </IonToolbar>

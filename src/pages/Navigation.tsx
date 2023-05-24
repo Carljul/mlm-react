@@ -35,8 +35,11 @@ import Profile from './profile/Profile';
 import Wallet from './wallet/Wallet';
 import Genealogy from './genealogy/Genealogy';
 import AddCards from './cards/AddCard';
+import CartClass from '../models/Cart';
   
 const Navigation: React.FC = () => {
+    const cart = new CartClass();
+    let cartCount = cart.cartCount();
     return (
         <IonTabs>
             {/* Routes */}
@@ -85,7 +88,7 @@ const Navigation: React.FC = () => {
 
                 <IonTabButton tab="cart" href="/app/cart">
                     <FiShoppingCart className='navigation-icon'/>
-                    <IonLabel>Cart <IonBadge slot='end' color='danger' className='badgeNotification float'>11</IonBadge></IonLabel>
+                    <IonLabel>Cart {cartCount > 0 ? <IonBadge slot='end' color='danger' className='badgeNotification float'>{cartCount}</IonBadge>:<></>}</IonLabel>
                 </IonTabButton>
 
                 <IonTabButton tab="orders" href="/app/orders">

@@ -8,7 +8,7 @@ const StateContext = createContext({
         genealogy_invitation_code: null,
         role_id: null,
         id: null,
-        avatar: null,
+        profile_image: null,
         person: {
             firstname: null,
             middlename: null,
