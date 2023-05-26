@@ -38,11 +38,11 @@ const CartItemComponent: React.FC<CartItemProps> = (props: CartItemProps) => {
     return (
         <div className="cartItems d-flex center-align">
             <div className="img">
-                <IonImg src={props.img} alt=""></IonImg>
+                <IonImg src={props.product.details.imageUrl} alt=""></IonImg>
             </div>
             <div className="description">
-                <Link to={`/app/product/details/`+props.id}><IonLabel className='title'>{props.name}</IonLabel></Link>
-                <IonLabel color='success'>{`$`+props.price}</IonLabel>
+                <Link to={`/app/product/details/`+props.id}><IonLabel className='title'>{props.product.details.name}</IonLabel></Link>
+                <IonLabel color='success'>{`$`+props.product.details.price}</IonLabel>
                 {
                     variations ?
                     <IonLabel className="variation">{variations}</IonLabel>

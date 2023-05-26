@@ -8,6 +8,7 @@ const StateContext = createContext({
         genealogy_invitation_code: null,
         role_id: null,
         id: null,
+        profile_image: null,
         person: {
             firstname: null,
             middlename: null,
@@ -25,7 +26,7 @@ const StateContext = createContext({
 });
 
 export const ContextProvider = ({children}) => {
-    const [user, setUser] = useState();
+    const [user, setUser] = useState(StateContext.user);
     const [token, _setToken] = useState();
 
     const setToken = (token) => {
