@@ -1,0 +1,38 @@
+.genealogy-container {
+    display: grid;
+    width: 100%;
+    overflow: auto !important;
+    border: solid 1px green;
+    justify-content: center;
+}
+
+.genealogy-avatar {
+    border-radius: 100px;
+    display: block;
+}
+
+.hr {
+    border-width: 1px;
+}
+
+/* Testing css */
+
+.d-grid-center {
+    border: solid 1px;
+}
+
+.org-wrapper {
+    width: 100vh;
+    border: solid 1px;
+    height: auto;
+}
+
+.ion-col {
+    display: grid;
+    border: solid 1px;
+    justify-content: center;
+}
+
+.io-avatar {
+    justify-self: center;
+}

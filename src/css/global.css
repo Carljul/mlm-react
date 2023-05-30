@@ -901,16 +901,6 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
     font-size: 2vw;
 }
 
-.genealogy-container {
-    width: 100%;
-    overflow-x: scroll;
-}
-
-.genealogy-avatar {
-    border-radius: 100px;
-    display: block;
-}
-
 .epa-button {
     --background: rgb(179,210,83);
     --background: linear-gradient(90deg, rgba(179,210,83,1) 0%, rgba(85,174,80,1) 46%, rgba(11,141,67,1) 100%);
@@ -938,4 +928,8 @@ ion-radio.shippingRadio.radio-checked::part(mark) {
     width: 30px;
     border-radius: 50px;
     margin-right: 10px;
+}
+
+.star-rating-yellow {
+    color: yellow;
 }
